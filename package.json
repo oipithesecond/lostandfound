@@ -1,0 +1,11 @@
+{
+  "name": "lostandfound",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lostscript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "oipithesecond",
+  "license": "ISC"
+}
