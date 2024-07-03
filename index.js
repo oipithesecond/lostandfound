@@ -10,6 +10,9 @@ app.set('view engine', 'ejs')
 app.get("/", function (req, res) {
   res.render("index")
 })
+app.get("/lostupload", function(req,res){
+  res.render("lostupload")
+})
 app.get("/item/:lostitem", function(req,res){
   res.send(`Lost Item: ${req.params.lostitem}`)
 })
