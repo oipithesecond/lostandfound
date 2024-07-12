@@ -9,7 +9,12 @@ app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine', 'ejs')
 
 app.get("/", function (req, res) {
-  res.render("index")
+  fs.readdir(`./items`,function(err,items){
+    if(err){
+      console.log("error reading dictonary")
+    }
+  res.render("index",{items:items})
+  })
 })
 app.get("/lostupload", function(req,res){
   res.render("lostupload")
@@ -17,5 +22,10 @@ app.get("/lostupload", function(req,res){
 app.get("/item/:lostitem", function(req,res){
   res.send(`Lost Item: ${req.params.lostitem}`)
 })
-
-app.listen(3000)
+app.post("/create", function(req,res){
+  fs.writeFile(`./items/${req.body.title.split(" ").join("")}.txt`, req.body.description, function(err){})
+  res.redirect("/")
+})
+app.listen(3000, ()=>{
+  console.log("Server is running on port 3000")
+})
