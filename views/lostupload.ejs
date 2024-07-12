@@ -16,6 +16,19 @@
                 <input class="mt-2 bg-blue-500 px-5 py-2 rounded-md" type="submit" value="Upload details">
             </form>
         </div>
+        <div class ="your found items flex gap-3 flex-wrap px-10">
+            <% if(items.length>0){%>
+                <% items.forEach(function(val) { %>
+                    <div class = "item w-72 px-5 py-3 rounded-md bg-zinc-800">
+                        <h1 class="text-white text-2xl tracking-tighter"><%= val %></h1>
+                        <h1 class="text-white text-2xl tracking-tighter"><%= items.description %></h1>
+                        <a class="text-blue-500 inline-block mt-3" href="">post link</a>
+                    </div>
+                <% }) %>
+            <% }else{ %>
+                <h3 class="text-white">no lost items yet</h3>
+            <% } %>
+        </div>
     </div>
     <p>upload your details</p>
     <script src="/index.js"></script>

@@ -10,19 +10,19 @@ app.set('view engine', 'ejs')
 
 app.get("/", function (req, res) {
   fs.readdir(`./items`,function(err,items){
-    if(err){
-      console.log("error reading dictonary")
-    }
   res.render("index",{items:items})
   })
 })
 app.get("/lostupload", function(req,res){
-  res.render("lostupload")
+  fs.readdir(`./items`,function(err,items){
+  res.render("lostupload",{items:items})
+  })
 })
 app.get("/item/:lostitem", function(req,res){
   res.send(`Lost Item: ${req.params.lostitem}`)
 })
 app.post("/create", function(req,res){
+  console.log(req.body)
   fs.writeFile(`./items/${req.body.title.split(" ").join("")}.txt`, req.body.description, function(err){})
   res.redirect("/")
 })
