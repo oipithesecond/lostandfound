@@ -1,4 +1,5 @@
-body {
+body 
+{
     margin: 0;
     padding: 0;
     border: 0;
@@ -6,22 +7,24 @@ body {
     background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
 }
 
-.main-container {
+.main-container 
+{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 10px;
 }
 
-.flexi {
+.flexi 
+{
     display: flex;
     gap: 10px;
 }
 
-.upar {
+.upar 
+{
 
     background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
-
 
     width: 100vw;
     height: 10vh;
@@ -29,7 +32,8 @@ body {
     border-radius: 10px 10px 0px 0px;
 }
 
-.upar img {
+.upar img 
+{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -38,39 +42,47 @@ body {
     transition: transform 0.5s;
 }
 
-.upar img:hover {
+.upar img:hover 
+{
     animation: animateLogo 0.5s ease-in-out;
 }
 
-@keyframes animateLogo {
-
+@keyframes animateLogo 
+{
     0%,
-    100% {
+    100% 
+    {
         transform: rotate(0deg);
     }
 
-    15% {
+    15% 
+    {
         transform: rotate(-5deg);
     }
 
-    30% {
+    30% 
+    {
         transform: rotate(3deg);
     }
 
-    45% {
+    45% 
+    {
         transform: rotate(-3deg);
     }
 
-    60% {
+    60% 
+    {
         transform: rotate(2deg);
     }
 
-    75% {
+    75% 
+    {
         transform: rotate(-1deg);
     }
 }
 
-.content {
+.content 
+{
     width: 62vw;
     height: 84.5vh;
     font-size: 2rem;
@@ -79,7 +91,8 @@ body {
     margin: 10px;
 }
 
-.content p {
+.content p 
+{
     color: whitesmoke;
     margin: 0;
     border: 0;
@@ -88,7 +101,8 @@ body {
     font-size: 90%;
 }
 
-.loghin {
+.loghin 
+{
     width: 32vw;
     height: 84.5vh;
     font-size: 2rem;
@@ -101,20 +115,17 @@ body {
 }
 
 
-.loghin{
-    /* margin: 0; */
+.loghin
+{
     padding: 0;
     position: relative;
-    /* min-height: 90vh; */
     display: flex;
 }
 
-.content:hover,
-.loghin:hover{
+.content:hover,.loghin:hover
+{
     transform: scale(1.015);
-    /* Scale up by 5% on hover */
     transition: transform 0.3s ease;
-    /* Smooth transition over 0.3 seconds */
 }
 
 .form-structor {
@@ -145,7 +156,8 @@ body {
         background-image: url("https://picsum.photos/400/800?grayscale");
     }
 
-    .signup {
+    .signup 
+    {
         position: absolute;
         top: 40%;
         left: 50%;
@@ -155,36 +167,42 @@ body {
         -webkit-transition: all .3s ease;
 
 
-        &.slide-up {
+        &.slide-up 
+        {
             top: 5%;
             -webkit-transform: translate(-23%, 0%);
             -webkit-transition: all .3s ease;
         }
 
         &.slide-up .form-holder,
-        &.slide-up .submit-btn {
+        &.slide-up .submit-btn 
+        {
             opacity: 0;
             visibility: hidden;
         }
 
-        &.slide-up .form-title {
+        &.slide-up .form-title 
+        {
             font-size: 1em;
             cursor: pointer;
         }
 
-        &.slide-up .form-title span {
+        &.slide-up .form-title span 
+        {
             margin-right: 5px;
             opacity: 1;
             visibility: visible;
             -webkit-transition: all .3s ease;
         }
 
-        .form-title {
+        .form-title 
+        {
             color: #fff;
             font-size: 1.7em;
             margin-left: -28px;
 
-            span {
+            span 
+            {
                 color: rgba(0, 0, 0, 0.4);
                 opacity: 0;
                 visibility: hidden;
@@ -192,7 +210,8 @@ body {
             }
         }
 
-        .form-holder {
+        .form-holder 
+        {
             border-radius: 15px;
             background-color: #fff;
             overflow: hidden;
@@ -201,7 +220,8 @@ body {
             visibility: visible;
             -webkit-transition: all .3s ease;
 
-            .input {
+            .input 
+            {
                 border: 0;
                 outline: none;
                 box-shadow: none;
@@ -213,17 +233,20 @@ body {
                 width: 100%;
                 font-size: 12px;
 
-                &:last-child {
+                &:last-child 
+                {
                     border-bottom: 0;
                 }
 
-                &::-webkit-input-placeholder {
+                &::-webkit-input-placeholder 
+                {
                     color: rgba(0, 0, 0, 0.4);
                 }
             }
         }
 
-        .submit-btn {
+        .submit-btn 
+        {
             background-color: rgba(0, 0, 0, 0.4);
             color: rgba(256, 256, 256, 0.7);
             border: 0;
@@ -239,14 +262,16 @@ body {
             visibility: visible;
             -webkit-transition: all .3s ease;
 
-            &:hover {
+            &:hover 
+            {
                 transition: all .3s ease;
                 background-color: rgba(0, 0, 0, 0.8);
             }
         }
     }
 
-    .login {
+    .login 
+    {
         position: absolute;
         top: 20%;
         left: 0;
@@ -256,7 +281,8 @@ body {
         z-index: 5;
         -webkit-transition: all .3s ease;
 
-        &::before {
+        &::before 
+        {
             content: '';
             position: absolute;
             left: 50%;
@@ -270,8 +296,8 @@ body {
             -webkit-transition: all .3s ease;
         }
 
-        .center {
-            
+        .center 
+        {  
             position: absolute;
             top: calc(50% - 10%);
             left: 50%;
@@ -280,13 +306,15 @@ body {
             z-index: 5;
             -webkit-transition: all .3s ease;
 
-            .form-title {
+            .form-title 
+            {
                 color: #000;
                 font-size: 1.7em;
                 /* text-align: center; */
                 margin-left: -10px;
 
-                span {
+                span 
+                {
                     color: rgba(0, 0, 0, 0.4);
                     opacity: 0;
                     visibility: hidden;
@@ -294,7 +322,8 @@ body {
                 }
             }
 
-            .form-holder {
+            .form-holder 
+            {
                 border-radius: 15px;
                 background-color: #fff;
                 border: 1px solid #eee;
@@ -304,7 +333,8 @@ body {
                 visibility: visible;
                 -webkit-transition: all .3s ease;
 
-                .input {
+                .input 
+                {
                     border: 0;
                     outline: none;
                     box-shadow: none;
@@ -316,17 +346,20 @@ body {
                     width: 100%;
                     font-size: 12px;
 
-                    &:last-child {
+                    &:last-child 
+                    {
                         border-bottom: 0;
                     }
 
-                    &::-webkit-input-placeholder {
+                    &::-webkit-input-placeholder 
+                    {
                         color: rgba(0, 0, 0, 0.4);
                     }
                 }
             }
 
-            .submit-btn {
+            .submit-btn 
+            {
                 background-color: #6B92A4;
                 color: rgba(256, 256, 256, 0.7);
                 border: 0;
@@ -342,32 +375,37 @@ body {
                 visibility: visible;
                 -webkit-transition: all .3s ease;
 
-                &:hover {
+                &:hover 
+                {
                     transition: all .3s ease;
                     background-color: rgba(0, 0, 0, 0.8);
                 }
             }
         }
 
-        &.slide-up {
+        &.slide-up 
+        {
             top: 90%;
             -webkit-transition: all .3s ease;
         }
 
-        &.slide-up .center {
+        &.slide-up .center 
+        {
             top: 10%;
             -webkit-transform: translate(-25%, 0%);
             -webkit-transition: all .3s ease;
         }
 
         &.slide-up .form-holder,
-        &.slide-up .submit-btn {
+        &.slide-up .submit-btn 
+        {
             opacity: 0;
             visibility: hidden;
             -webkit-transition: all .3s ease;
         }
 
-        &.slide-up .form-title {
+        &.slide-up .form-title 
+        {
             font-size: 1em;
             margin: 0;
             padding: 0;
@@ -375,7 +413,8 @@ body {
             -webkit-transition: all .3s ease;
         }
 
-        &.slide-up .form-title span {
+        &.slide-up .form-title span 
+        {
             margin-right: 5px;
             opacity: 1;
             visibility: visible;
@@ -393,7 +432,6 @@ body {
         padding: 0;
         border: 0;
         overflow: 100%;
-        /* border: 5px solid black; */
     }
 
     .flexi 
