@@ -1,0 +1,255 @@
+body 
+{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
+    color: whitesmoke;
+}
+*
+{
+    box-sizing: border-box;
+}
+.upar
+{
+    background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
+    width: 99vw;
+    height: 10vh;
+    font-size: 4rem;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.upar img 
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 10.5vh;
+    transition: transform 0.5s;
+}
+
+.upar img:hover 
+{
+    animation: animateLogo 0.5s ease-in-out;
+}
+
+@keyframes animateLogo 
+{
+
+    0%,
+    100% 
+    {
+        transform: rotate(0deg);
+    }
+
+    15% 
+    {
+        transform: rotate(-5deg);
+    }
+
+    30% 
+    {
+        transform: rotate(3deg);
+    }
+
+    45% 
+    {
+        transform: rotate(-3deg);
+    }
+
+    60% 
+    {
+        transform: rotate(2deg);
+    }
+
+    75% 
+    {
+        transform: rotate(-1deg);
+    }
+}
+
+.container 
+{
+    width: 91vw;
+    /* max-width: 600px; */
+    min-height: 70vh;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgb(38, 38, 38);
+    border-radius: 10px;
+}
+
+.container:hover
+{
+    box-shadow: 0 2px 10px whitesmoke;
+    transform: scale(1.005);
+    /* Scale up by 5% on hover */
+    transition: transform 0.3s ease-in-out
+    /* Smooth transition over 0.3 seconds */
+}
+
+.title-section,
+.description-section,
+.upload-section,
+.dropdown-section,
+.submit-section 
+{
+    margin-bottom: 20px;
+}
+
+h2 
+{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* margin-bottom: 10px; */
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+input[type="text"],
+textarea 
+{
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #C0C0C0;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #C0C0C0;
+    font-family: monospace;
+}
+
+input[type="text"]:focus,
+textarea:focus 
+{
+    outline: 5px solid rgba(67, 9, 67, 1);
+}
+
+textarea
+{
+    resize: none;
+    overflow: hidden;
+    min-height: 100px;
+    /* outline: none; */
+}
+
+.upload-section 
+{
+    text-align: center;
+}
+
+.upload-button 
+{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(67, 9, 67, 1);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.upload-button:hover 
+{
+    background-color: #0056b3;
+}
+
+#image-upload 
+{
+    display: none;
+}
+
+#image-preview
+{
+    display: flex;
+}
+
+#image-preview img 
+{
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+#image-preview div 
+{
+    padding-right: 10px;
+}
+
+.dropdown-section 
+{
+    font-weight: lighter;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dropdown 
+{
+    flex: 1;
+}
+
+.dropdown label
+{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select 
+{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #C0C0C0;
+    appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+select:focus 
+{
+    outline: none;
+    border-width: 5px;
+    border-color: rgba(67, 9, 67, 1);
+}
+
+.submit-section 
+{
+    text-align: center;
+}
+
+.submit-section button 
+{
+    padding: 10px 20px;
+    background-color: #7AA128;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.submit-section button:hover 
+{
+    background-color: #218838;
+}
+
+.notification 
+{
+    display: none;
+    position: fixed;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff4d4d;
+    color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    z-index: 1000;
+}

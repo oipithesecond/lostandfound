@@ -23,9 +23,7 @@ body
 
 .upar 
 {
-
     background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
-
     width: 100vw;
     height: 10vh;
     font-size: 4rem;
@@ -49,6 +47,7 @@ body
 
 @keyframes animateLogo 
 {
+
     0%,
     100% 
     {
@@ -106,7 +105,6 @@ body
     width: 32vw;
     height: 84.5vh;
     font-size: 2rem;
-    /* background-color: grey; */
     background-image:url("https://picsum.photos/400/800?grayscale") ;
     border-radius: 10px;
     padding: 2rem;
@@ -117,18 +115,22 @@ body
 
 .loghin
 {
+    /* margin: 0; */
     padding: 0;
     position: relative;
+    /* min-height: 90vh; */
     display: flex;
 }
 
-.content:hover,.loghin:hover
+.content:hover,
+.loghin:hover
 {
     transform: scale(1.015);
     transition: transform 0.3s ease;
 }
 
-.form-structor {
+.form-structor 
+{
 
     display: block;
     background-color: #222;
@@ -210,7 +212,7 @@ body
             }
         }
 
-        .form-holder 
+        .form-holder
         {
             border-radius: 15px;
             background-color: #fff;
@@ -297,7 +299,7 @@ body
         }
 
         .center 
-        {  
+        {    
             position: absolute;
             top: calc(50% - 10%);
             left: 50%;
@@ -313,8 +315,7 @@ body
                 /* text-align: center; */
                 margin-left: -10px;
 
-                span 
-                {
+                span {
                     color: rgba(0, 0, 0, 0.4);
                     opacity: 0;
                     visibility: hidden;
@@ -360,7 +361,7 @@ body
 
             .submit-btn 
             {
-                background-color: #6B92A4;
+                background-color: rgba(67, 9, 67, 1);
                 color: rgba(256, 256, 256, 0.7);
                 border: 0;
                 border-radius: 15px;
@@ -432,6 +433,7 @@ body
         padding: 0;
         border: 0;
         overflow: 100%;
+        /* border: 5px solid black; */
     }
 
     .flexi 
@@ -446,7 +448,6 @@ body
         height: 10vh;
         font-size: 4rem;
         border-radius: 10px 10px 0px 0px;
-        border-bottom: 5px solid black;
     }
 
     .upar img 
@@ -512,5 +513,18 @@ body
         font-size: 2rem;
         background-color: black;
         border-radius: 0px 0px 10px 0px;
+    }
+
+    .loghin
+    {
+        background-image: url("https://picsum.photos/1100/1350?grayscale");
+    }
+
+    .form-structor
+    {
+        &::after
+        {
+            background-image: url("https://picsum.photos/1100/1350?grayscale");
+        }
     }
 }
