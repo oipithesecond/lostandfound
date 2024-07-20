@@ -18,8 +18,10 @@ app.get("/lostupload", function(req,res){
   res.render("lostupload",{items:items})
   })
 })
-app.get("/item/:lostitem", function(req,res){
-  res.send(`Lost Item: ${req.params.lostitem}`)
+app.get("/items/:lostitem", function(req,res){
+  fs.readFile(`./items/${req.params.lostitem}`,"utf-8", function(err,itemdata){
+    res.render("lostitem",{lostitem: req.params.lostitem, itemdata: itemdata})
+  })
 })
 app.post("/create", function(req,res){
   console.log(req.body)
