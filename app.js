@@ -1,33 +1,46 @@
 const path = require('path')
 const fs = require('fs')
 const express = require('express')
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 const app = express()
+const itemModel = require('./models/item')
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine', 'ejs')
 
-app.get("/", function (req, res) {
-  fs.readdir(`./items`,function(err,items){
-  res.render("index",{items:items})
-  })
+app.get("/", async (req, res) => {
+  let items = await itemModel.find()
+  res.render("index",)
 })
-app.get("/lostupload", function(req,res){
-  fs.readdir(`./items`,function(err,items){
-  res.render("lostupload",{items:items})
+app.get("/login", function (req, res) {
+  res.render("login")
   })
+app.get("/lostupload", function(req,res){
+  res.render("upload")
 })
 app.get("/items/:lostitem", function(req,res){
-  fs.readFile(`./items/${req.params.lostitem}`,"utf-8", function(err,itemdata){
-    res.render("lostitem",{lostitem: req.params.lostitem, itemdata: itemdata})
+    res.render("lostitem")
   })
-})
-app.post("/create", function(req,res){
-  console.log(req.body)
-  fs.writeFile(`./items/${req.body.title.split(" ").join("")}.txt`, req.body.description, function(err){})
-  res.redirect("/")
-})
+app.post('/create', upload.array('images', 10), async (req, res) => {
+    console.log(req.body);
+    console.log(req.files);
+    let { title, description, itemType, building, specificArea } = req.body;
+    const images = req.files.map(file => ({
+      filename: file.filename,
+      path: file.path,
+      originalname: file.originalname,
+    }))
+    try {
+        let createdItem = await itemModel.create({ title, description, itemType, building, specificArea });
+        res.json(createdItem);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error saving data to the database.');
+    }
+});
 app.listen(3000, ()=>{
   console.log("Server is running on port 3000")
 })

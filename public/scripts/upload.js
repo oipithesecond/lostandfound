@@ -116,9 +116,28 @@ sortedBuildings.forEach(building => {
         if (missingDetails.length) {
             showNotification(`Please fill out the following fields: ${missingDetails.join(', ')}`);
         } else {
-            // Submit the form
-            console.log('Form submitted successfully');
-            // Optionally, reset form fields or redirect to another page
+            const formData = new FormData();
+            formData.append('title', titleInput.value);
+            formData.append('description', descriptionTextarea.value);
+            formData.append('itemType', itemTypeSelect.value);
+            formData.append('building', buildingSelect.value);
+            formData.append('specificArea', specificAreaSelect.value);
+            Array.from(imageUploadInput.files).forEach(file => {
+            formData.append('images', file);
+        });
+        fetch('/create', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data);
+        showNotification("Form submitted successfully");
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        showNotification("Error submitting form");
+        });
         }
     });
 

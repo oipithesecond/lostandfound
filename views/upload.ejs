@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Found Item</title>
-    <link rel="stylesheet" href="../public/stylesheets/upload.css">
+    <link rel="stylesheet" href="stylesheets/upload.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -16,17 +16,18 @@
     <div class="notification" id="notification"></div>
     <div class="upar">
         <a href="./login.ejs">
-            <img src="./FoundIt! logo.png" alt="">
+            <img src="images/FoundIt! logo.png" alt="">
         </a>
     </div>
     <div class="container">
+        <form action="/create" method="post" enctype="multipart/form-data">
         <div class="title-section">
             <h2>Title</h2>
-            <input type="text" id="title" placeholder="Title">
+            <input type="text" id="title" name="title" placeholder="Title" required>
         </div>
         <div class="description-section">
             <h2>Description</h2>
-            <textarea id="description" placeholder="Provide item or contact details (optional)"></textarea>
+            <textarea id="description" name="description" placeholder="Provide item or contact details (optional)"></textarea>
         </div>
         <div class="upload-section">
             <label for="image-upload" class="upload-button">Upload Image</label>
@@ -82,8 +83,9 @@
         <div class="submit-section">
             <button type="submit" id="submit-button">Submit</button>
         </div>
+    </form>
     </div>
-    <script src="../public/scripts/upload.js"></script>
+    <script src="scripts/upload.js"></script>
 </body>
 
 </html>
