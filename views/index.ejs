@@ -9,15 +9,25 @@
 </head>
 <body>
     <h1>Lost & Found portal VITAP</h1>
-    <a class="uploadpagebutton" href="lostupload"><button>found a lost item?</button></a>
-    <div class="main w-full min-h-screen bg-zinc-900">
+    <a class="uploadpagebutton" href="upload"><button>found a lost item?</button></a>
+    <div class="main w-full min-h-screen bg-zinc-900 p-10 text-white">
         <div class ="your found items flex gap-3 flex-wrap px-10">
-                    <div class = "item w-72 px-5 py-3 rounded-md bg-zinc-800">
-                        <h1 class="text-white text-2xl tracking-tighter"></h1>
-                        <h1 class="text-white text-2xl tracking-tighter"></h1>
-                        <a class="text-blue-500 inline-block mt-3" href="">post link</a>
+            <% if(items.length) { %>
+            <% items.forEach(function(item){ %>
+                <div class = "item w-72 px-5 py-3 rounded-md bg-zinc-800">
+                    <div class="w-full h-72 rounded-lg bg-zinc-700 overflow-hidden">
+                        <% item.images.forEach(function(image) { %>
+                    <img src="/<%= image.path %>" alt="<%= image.originalname %>">
+                    <% }) %>
                     </div>
+                    <h1 class="text-white text-2xl tracking-tighter"><%= item.title %></h1>
+                    <h1 class="text-white text-2xl tracking-tighter"><%= item.type %> found at <%= item.building %> <%= item.specificArea %> </h1>
+                    
+                </div>
+            <% }) %>
+            <% } else { %>
                 <h3 class="text-white">no lost items yet</h3>
+            <% } %>
         </div>
     </div>
     <script src="/index.js"></script>

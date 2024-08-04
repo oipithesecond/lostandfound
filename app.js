@@ -2,23 +2,24 @@ const path = require('path')
 const fs = require('fs')
 const express = require('express')
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
 const app = express()
 const itemModel = require('./models/item')
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,'public')))
+const upload = multer({ dest: './itemimage' })
+app.use('/itemimage', express.static(path.join(__dirname, 'itemimage')));
 app.set('view engine', 'ejs')
 
 app.get("/", async (req, res) => {
   let items = await itemModel.find()
-  res.render("index",)
+  res.render("index",{items})
 })
 app.get("/login", function (req, res) {
   res.render("login")
   })
-app.get("/lostupload", function(req,res){
+app.get("/upload", function(req,res){
   res.render("upload")
 })
 app.get("/items/:lostitem", function(req,res){
@@ -34,8 +35,9 @@ app.post('/create', upload.array('images', 10), async (req, res) => {
       originalname: file.originalname,
     }))
     try {
-        let createdItem = await itemModel.create({ title, description, itemType, building, specificArea });
+        let createdItem = await itemModel.create({ title, description, itemType, building, specificArea, images });
         res.json(createdItem);
+
     } catch (error) {
         console.error(error);
         res.status(500).send('Error saving data to the database.');
