@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found</title>
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1>Lost & Found portal VITAP</h1>
+    <a class="uploadpagebutton" href="lostupload"><button>found a lost item?</button></a>
+    <div class="main w-full min-h-screen bg-zinc-900 p-10 text-white">
+        <% items.forEach(function(item){ %>
+            <div class="flex gap-3 mt-10">
+                <a class="text-red-500" href="/delete/<%= item._id %>">Delete Item</a>
+            </div>
+        <h1 class="text-4xl tracking-tighter"><%= item.title%></h1>
+        <h2 class="text-2xl "><%= item.itemType%></h2>
+        <h2 class="text-2xl "><%= item.building %> <%= item.specificArea %></h2>
+        <h2 class="text-3xl "><%= item.description %></h2>
+        <% item.images.forEach(function(image) { %>
+            <img src="/<%= image.path %>" alt="<%= image.originalname %>">
+            <% }) %>
+    </div>
+    <% }) %>
+    <script src="/index.js"></script>
+</body>
+</html>

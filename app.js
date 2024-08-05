@@ -22,8 +22,9 @@ app.get("/login", function (req, res) {
 app.get("/upload", function(req,res){
   res.render("upload")
 })
-app.get("/items/:lostitem", function(req,res){
-    res.render("lostitem")
+app.get("/items/:id", async (req,res)=>{
+    let items = await itemModel.find({_id:req.params.id})
+    res.render("item",{items})
   })
 app.post('/create', upload.array('images', 10), async (req, res) => {
     console.log(req.body);
@@ -47,6 +48,7 @@ app.get("/delete/:id", async (req, res) => {
   let items = await itemModel.findOneAndDelete({_id:req.params.id})
   res.redirect("/")
 })
+
 app.listen(3000, ()=>{
   console.log("Server is running on port 3000")
 })

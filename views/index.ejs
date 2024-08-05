@@ -14,6 +14,7 @@
         <div class ="your found items flex gap-3 flex-wrap px-10">
             <% if(items.length) { %>
             <% items.forEach(function(item){ %>
+                <a href="/items/<%= item._id %>">
                 <div class = "item w-72 px-5 py-3 rounded-md bg-zinc-800">
                     <div class="w-full h-72 rounded-lg bg-zinc-700 overflow-hidden">
                         <% item.images.forEach(function(image) { %>
@@ -21,13 +22,9 @@
                     <% }) %>
                     </div>
                     <h1 class="text-white text-2xl tracking-tighter"><%= item.title %></h1>
-                    <h1 class="text-white text-2xl tracking-tighter"><%= item.type %> found at <%= item.building %> <%= item.specificArea %> </h1>
-                    <div class="flex gap-3 mt-10">
-                        <a class="text-zinc-200" href="">Edit Item</a>
-                        <a class="text-red-500" href="/delete/<%= item._id %>">Delete Item</a>
-                    </div>
-                    
+                    <h1 class="text-white text-2xl tracking-tighter"><%= item.itemType %> found at <%= item.building %> <%= item.specificArea %> </h1>
                 </div>
+            </a>
             <% }) %>
             <% } else { %>
                 <h3 class="text-white">no lost items yet</h3>
