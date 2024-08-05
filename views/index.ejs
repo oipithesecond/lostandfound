@@ -22,6 +22,10 @@
                     </div>
                     <h1 class="text-white text-2xl tracking-tighter"><%= item.title %></h1>
                     <h1 class="text-white text-2xl tracking-tighter"><%= item.type %> found at <%= item.building %> <%= item.specificArea %> </h1>
+                    <div class="flex gap-3 mt-10">
+                        <a class="text-zinc-200" href="">Edit Item</a>
+                        <a class="text-red-500" href="/delete/<%= item._id %>">Delete Item</a>
+                    </div>
                     
                 </div>
             <% }) %>

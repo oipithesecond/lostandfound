@@ -36,13 +36,17 @@ app.post('/create', upload.array('images', 10), async (req, res) => {
     }))
     try {
         let createdItem = await itemModel.create({ title, description, itemType, building, specificArea, images });
-        res.json(createdItem);
+        res.json(createdItem)
 
     } catch (error) {
-        console.error(error);
+        console.error(error)
         res.status(500).send('Error saving data to the database.');
     }
-});
+})
+app.get("/delete/:id", async (req, res) => {
+  let items = await itemModel.findOneAndDelete({_id:req.params.id})
+  res.redirect("/")
+})
 app.listen(3000, ()=>{
   console.log("Server is running on port 3000")
 })
