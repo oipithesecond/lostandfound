@@ -10,11 +10,12 @@
 <body>
     <h1>Lost & Found portal VITAP</h1>
     <a class="uploadpagebutton" href="upload"><button>found a lost item?</button></a>
-    <a class="profilepagebutton" href=""><button>your profile</button></a>
+    <a class="profilepagebutton" href="profile"><button>your profile</button></a>
+    <a class="logout" href="logout"><button>logout</button></a>
     <div class="main w-full min-h-screen bg-zinc-900 p-10 text-white">
         <div class ="your found items flex gap-3 flex-wrap px-10">
             <% if(items.length) { %>
-            <% items.forEach(function(item){ %>
+            <% items.reverse().forEach(function(item){ %>
                 <a href="/items/<%= item._id %>">
                 <div class = "item w-72 px-5 py-3 rounded-md bg-zinc-800">
                     <div class="w-full h-72 rounded-lg bg-zinc-700 overflow-hidden">

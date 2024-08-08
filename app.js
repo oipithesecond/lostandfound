@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+
 const connectDB = require("./models/main")
 const itemModel = require("./models/item")
 const userModel = require("./models/user")
@@ -19,7 +20,7 @@ const upload = multer({ dest: './itemimage' })
 app.use('/itemimage', express.static(path.join(__dirname, 'itemimage')));
 app.set('view engine', 'ejs')
 
-app.get("/", async (req, res) => {
+app.get("/", isLoggedin, async (req, res) => {
   let items = await itemModel.find()
   res.render("index",{items})
 
@@ -27,21 +28,24 @@ app.get("/", async (req, res) => {
 app.get("/login", function (req, res) {
   res.render("login")
   })
-app.get("/upload", function(req,res){
-  let data = jwt.verify(req.cookies.token, "secret")
-  console.log(data)
+app.get("/upload", isLoggedin, function(req,res){
   res.render("upload")
 })
-app.get("/profile/:id", async (req,res)=>{
-  let users = await userModel.find({_id:req.params.id})
-  res.render("profile",{users})
+app.get("/profile/", isLoggedin, async (req,res)=>{
+  let user = await userModel.findOne({email:req.user.email}).populate("posts")
+  console.log(user)
+  res.render("profile",{user})
 })
-app.get("/items/:id", async (req,res)=>{
-    let items = await itemModel.find({_id:req.params.id})
+app.get("/items/:id", isLoggedin, async (req,res)=>{
+    let items = await itemModel.find({_id:req.params.id}).populate("user")
     res.render("item",{items})
   })
-app.post('/usersignup',(req,res)=>{
+app.post('/usersignup', async (req,res)=>{
   let{ name, email, password } = req.body
+  let user = await userModel.findOne({email})
+  if(user){
+    return res.status(500).send("User already registered. Try logging in instead")
+  }else{
   bcrypt.genSalt(10, (err,salt) => {
     bcrypt.hash(password, salt, async(err,hash) => {
         let createdUser = await userModel.create({
@@ -54,6 +58,7 @@ app.post('/usersignup',(req,res)=>{
         res.redirect("/")
     })
   })
+}
 })
 app.post("/userlogin", async (req,res)=>{
   try{
@@ -75,7 +80,17 @@ app.get('/logout',(req,res)=>{
   res.cookie("token", "")
   res.redirect("login")
 })
-app.post('/create', upload.array('images', 10), async (req, res) => {
+function isLoggedin(req,res,next){
+  if(req.cookies.token ===""){
+    res.redirect("/login")
+  }else{
+    let data = jwt.verify(req.cookies.token, "secret key")
+    req.user = data
+  }
+  next()
+}
+app.post('/create', isLoggedin, upload.array('images', 10), async (req, res) => {
+  let user = await userModel.findOne({email: req.user.email})
     console.log(req.body);
     console.log(req.files);
     let { title, description, itemType, building, specificArea } = req.body
@@ -85,8 +100,8 @@ app.post('/create', upload.array('images', 10), async (req, res) => {
       originalname: file.originalname,
     }))
     try {
-        let createdItem = await itemModel.create({ title, description, itemType, building, specificArea, images, uploadDate, user });
-        user.posts.push(item._id)
+        let createdItem = await itemModel.create({ title, description, itemType, building, specificArea, images, user: user._id });
+        user.posts.push(createdItem._id)
         await user.save()
         res.json(createdItem)
 
@@ -95,7 +110,7 @@ app.post('/create', upload.array('images', 10), async (req, res) => {
         res.status(500).send('Error saving data to the database.');
     }
 })
-app.get("/delete/:id", async (req, res) => {
+app.get("/delete/:id", isLoggedin, async (req, res) => {
   let items = await itemModel.findOneAndDelete({_id:req.params.id})
   res.redirect("/")
 })
