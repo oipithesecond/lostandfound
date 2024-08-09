@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 
-const connectDB = require("./models/main")
+const connectDB = require("./utils/mongooseconfig")
 const itemModel = require("./models/item")
 const userModel = require("./models/user")
 const multerConfig = require("./utils/multerconfig")
