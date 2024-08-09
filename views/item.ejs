@@ -20,7 +20,7 @@
         <h2 class="text-2xl "><%= item.building %> <%= item.specificArea %></h2>
         <h2 class="text-3xl "><%= item.description %></h2>
         <% item.images.forEach(function(image) { %>
-            <img src="/<%= image.path %>" alt="<%= image.originalname %>">
+            <img src="/images/itemimage/<%=image.filename%>" alt="<%= image.originalname %>">
             <% }) %>
     </div>
     <% }) %>

@@ -20,7 +20,7 @@
                 <div class = "item w-72 px-5 py-3 rounded-md bg-zinc-800">
                     <div class="w-full h-72 rounded-lg bg-zinc-700 overflow-hidden">
                         <% item.images.forEach(function(image) { %>
-                    <img src="/<%= image.path %>" alt="<%= image.originalname %>">
+                    <img src="/images/itemimage/<%=image.filename%>" alt="<%= image.originalname %>">
                     <% }) %>
                     </div>
                     <h1 class="text-white text-2xl tracking-tighter"><%= item.title %></h1>

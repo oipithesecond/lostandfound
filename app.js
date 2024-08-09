@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const express = require('express')
-const multer = require('multer')
 const app = express()
 const cookieParser = require('cookie-parser')
 const bcrypt = require('bcryptjs')
@@ -11,13 +10,12 @@ const jwt = require('jsonwebtoken')
 const connectDB = require("./models/main")
 const itemModel = require("./models/item")
 const userModel = require("./models/user")
+const multerConfig = require("./utils/multerconfig")
 
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,'public')))
-const upload = multer({ dest: './itemimage' })
-app.use('/itemimage', express.static(path.join(__dirname, 'itemimage')));
 app.set('view engine', 'ejs')
 
 app.get("/", isLoggedin, async (req, res) => {
@@ -89,7 +87,7 @@ function isLoggedin(req,res,next){
   }
   next()
 }
-app.post('/create', isLoggedin, upload.array('images', 10), async (req, res) => {
+app.post('/create', isLoggedin, multerConfig.array('images', 10), async (req, res) => {
   let user = await userModel.findOne({email: req.user.email})
     console.log(req.body);
     console.log(req.files);
@@ -112,7 +110,7 @@ app.post('/create', isLoggedin, upload.array('images', 10), async (req, res) => 
 })
 app.get("/delete/:id", isLoggedin, async (req, res) => {
   let items = await itemModel.findOneAndDelete({_id:req.params.id})
-  res.redirect("/")
+  res.redirect("/profile")
 })
 connectDB().then(() => {
   app.listen(3000, () => {
