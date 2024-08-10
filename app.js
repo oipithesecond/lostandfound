@@ -11,6 +11,8 @@ const connectDB = require("./utils/mongooseconfig")
 const itemModel = require("./models/item")
 const userModel = require("./models/user")
 const multerConfig = require("./utils/multerconfig")
+require('dotenv').config()
+const {generateToken} = require("./utils/generatetoken")
 
 app.use(express.json())
 app.use(cookieParser())
@@ -51,7 +53,7 @@ app.post('/usersignup', async (req,res)=>{
           email,
           password: hash,
         })
-        let token = jwt.sign({email}, "secret key")
+        let token = generateToken(createdUser)
         res.cookie("token", token)
         res.redirect("/")
     })
@@ -64,7 +66,7 @@ app.post("/userlogin", async (req,res)=>{
   if(!user) return res.send("something went wrong")
   const match = await bcrypt.compare(req.body.password, user.password)
   if(match){
-    let token = jwt.sign({email: user.email}, "secret key")
+    let token = generateToken(user)
     res.cookie("token", token)
     return res.redirect("/")
   }else{
@@ -79,13 +81,18 @@ app.get('/logout',(req,res)=>{
   res.redirect("login")
 })
 function isLoggedin(req,res,next){
-  if(req.cookies.token ===""){
-    res.redirect("/login")
-  }else{
-    let data = jwt.verify(req.cookies.token, "secret key")
-    req.user = data
-  }
-  next()
+  if (!req.cookies.token) {
+    return res.redirect("/login");
+}
+
+try {
+    let data = jwt.verify(req.cookies.token, process.env.JWT_KEY);
+    req.user = data;
+    next();
+} catch (error) {
+    console.error("JWT verification failed:", error);
+    return res.redirect("/login");
+}
 }
 app.post('/create', isLoggedin, multerConfig.array('images', 10), async (req, res) => {
   let user = await userModel.findOne({email: req.user.email})
