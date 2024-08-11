@@ -18,6 +18,7 @@
             <div class="postcontainer flex gap-3 flex-wrap px-10">
                 <div class = "item w-72 px-5 py-3 rounded-md bg-zinc-800">
                     <%user.posts.forEach(function(post){ %>
+                        <a href="/items/<%= post._id %>">
                     <div class="w-full h-72 rounded-lg bg-zinc-700 overflow-hidden">
                     <% post.images.forEach(function(image) { %>
                     <img src="/images/itemimage/<%=image.filename%>" alt="<%= image.originalname %>">
@@ -25,6 +26,7 @@
                     </div>
                     <h1 class="text-white text-2xl tracking-tighter"><%= post.title %></h1>
                     <h1 class="text-white text-2xl tracking-tighter"><%= post.itemType %> found at <%= post.building %> <%= post.specificArea %>  </h1>
+                </a>
                     <div class="flex gap-3 mt-10">
                         <a class="text-red-500" href="/delete/<%= post._id %>">Delete Item</a>
                     </div>
@@ -32,6 +34,7 @@
                     <% }) %>
                 </div>
             </div>
+        </a>
         </div>
     </div>
 </body>

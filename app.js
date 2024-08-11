@@ -21,9 +21,13 @@ app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine', 'ejs')
 
 app.get("/", isLoggedin, async (req, res) => {
-  let items = await itemModel.find()
-  res.render("index",{items})
-
+  try {
+    let items = await itemModel.find();
+    res.render("index", { items });
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    res.status(500).send("Error loading the homepage.");
+  }
 })
 app.get("/login", function (req, res) {
   res.render("login")
@@ -32,33 +36,49 @@ app.get("/upload", isLoggedin, function(req,res){
   res.render("upload")
 })
 app.get("/profile/", isLoggedin, async (req,res)=>{
-  let user = await userModel.findOne({email:req.user.email}).populate("posts")
-  console.log(user)
-  res.render("profile",{user})
+  try {
+    let user = await userModel.findOne({ email: req.user.email }).populate("posts");
+    res.render("profile", { user });
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    res.status(500).send("Error loading the profile page.");
+  }
 })
 app.get("/items/:id", isLoggedin, async (req,res)=>{
     let items = await itemModel.find({_id:req.params.id}).populate("user")
     res.render("item",{items})
-  })
+})
 app.post('/usersignup', async (req,res)=>{
-  let{ name, email, password } = req.body
-  let user = await userModel.findOne({email})
-  if(user){
-    return res.status(500).send("User already registered. Try logging in instead")
-  }else{
-  bcrypt.genSalt(10, (err,salt) => {
-    bcrypt.hash(password, salt, async(err,hash) => {
-        let createdUser = await userModel.create({
-          name,
-          email,
-          password: hash,
-        })
-        let token = generateToken(createdUser)
-        res.cookie("token", token)
-        res.redirect("/")
-    })
-  })
-}
+  try {
+    let { name, email, password } = req.body;
+    let user = await userModel.findOne({ email });
+    if (user) {
+      return res.status(409).send("User already registered. Try logging in instead.");
+    }
+
+    bcrypt.genSalt(10, (err, salt) => {
+      if (err) throw err;
+      bcrypt.hash(password, salt, async (err, hash) => {
+        if (err) throw err;
+        try {
+          let createdUser = await userModel.create({
+            name,
+            email,
+            password: hash,
+          });
+          let token = generateToken(createdUser);
+          res.cookie("token", token);
+          res.redirect("/");
+        } catch (error) {
+          console.error("Error creating user:", error);
+          res.status(500).send("Error creating user.");
+        }
+      });
+    });
+  } catch (error) {
+    console.error("Error during user signup:", error);
+    res.status(500).send("Error during signup.");
+  }
 })
 app.post("/userlogin", async (req,res)=>{
   try{
@@ -84,7 +104,6 @@ function isLoggedin(req,res,next){
   if (!req.cookies.token) {
     return res.redirect("/login");
 }
-
 try {
     let data = jwt.verify(req.cookies.token, process.env.JWT_KEY);
     req.user = data;
@@ -96,8 +115,6 @@ try {
 }
 app.post('/create', isLoggedin, multerConfig.array('images', 10), async (req, res) => {
   let user = await userModel.findOne({email: req.user.email})
-    console.log(req.body);
-    console.log(req.files);
     let { title, description, itemType, building, specificArea } = req.body
     const images = req.files.map(file => ({
       filename: file.filename,
@@ -116,11 +133,21 @@ app.post('/create', isLoggedin, multerConfig.array('images', 10), async (req, re
     }
 })
 app.get("/delete/:id", isLoggedin, async (req, res) => {
-  let items = await itemModel.findOneAndDelete({_id:req.params.id})
-  res.redirect("/profile")
+  try {
+    let item = await itemModel.findByIdAndDelete(req.params.id);
+    if (!item) {
+      return res.status(404).send("Item not found.");
+    }
+    res.redirect("/profile");
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    res.status(500).send("Error deleting the item.");
+  }
 })
 connectDB().then(() => {
   app.listen(3000, () => {
     console.log('Server started on port 3000');
   });
-}).catch(err => console.error(err));
+}).catch(err=>{
+  console.error("Database connection failed:", err);
+})
