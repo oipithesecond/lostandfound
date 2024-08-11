@@ -51,6 +51,18 @@ app.get("/items/:id", isLoggedin, async (req,res)=>{
 app.post('/usersignup', async (req,res)=>{
   try {
     let { name, email, password } = req.body;
+        const namePattern = /^[a-zA-Z\s]+$/;
+        if (!namePattern.test(name)) {
+        return res.status(400).send("Name can only contain letters and spaces.");
+        }
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@vitapstudent\.ac\.in$/;
+        if (!emailPattern.test(email)) {
+          return res.status(400).send("Please use a valid VIT-AP student email address.");
+        }
+        const passwordPattern = /^\S{5,}$/;
+        if(!passwordPattern.test(email)) {
+          return res.status(400).send("Password must be at least 5 characters long and cannot contain spaces.")
+        }
     let user = await userModel.findOne({ email });
     if (user) {
       return res.status(409).send("User already registered. Try logging in instead.");

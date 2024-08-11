@@ -26,3 +26,30 @@ signupBtn.addEventListener('click', (e) => {
 		}
 	});
 });
+
+document.querySelector('.signup form').addEventListener('submit', function(e) {
+	const nameInput = document.querySelector('.signup form input[name="name"]');
+    const name = nameInput.value;
+    const namePattern = /^[a-zA-Z\s]{3,}$/;
+
+    if (!namePattern.test(name)) {
+        e.preventDefault(); 
+        alert("Name can only contain letters and spaces and it should be of minimum three letters.");
+    }
+    const emailInput = document.querySelector('.signup form input[name="email"]');
+    const email = emailInput.value;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@vitapstudent\.ac\.in$/;
+
+    if (!emailPattern.test(email)) {
+        e.preventDefault();  
+        alert("Please enter a valid VIT-AP student email address.");
+    }
+	const passwordInput = document.querySelector('.signup form input[name="password"]');
+    const password = passwordInput.value;
+    const passwordPattern = /^\S{5,}$/; 
+
+    if (!passwordPattern.test(password)) {
+        e.preventDefault();  
+        alert("Password must be at least 5 characters long and cannot contain spaces.");
+    }
+});
