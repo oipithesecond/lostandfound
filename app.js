@@ -23,7 +23,7 @@ app.set('view engine', 'ejs')
 app.get("/", isLoggedin, async (req, res) => {
   try {
     let items = await itemModel.find();
-    res.render("index", { items });
+    res.render("home", { items });
   } catch (error) {
     console.error("Error fetching items:", error);
     res.status(500).send("Error loading the homepage.");
@@ -133,16 +133,16 @@ app.post('/create', isLoggedin, multerConfig.array('images', 10), async (req, re
       path: file.path,
       originalname: file.originalname,
     }))
-    try {
+    // try {
         let createdItem = await itemModel.create({ title, description, itemType, building, specificArea, images, user: user._id });
         user.posts.push(createdItem._id)
         await user.save()
         res.json(createdItem)
 
-    } catch (error) {
-        console.error(error)
-        res.status(500).send('Error saving data to the database.');
-    }
+    // } catch (error) {
+    //     console.error(error)
+    //     res.status(500).send('Error saving data to the database.');
+    // }
 })
 app.get("/delete/:id", isLoggedin, async (req, res) => {
   try {

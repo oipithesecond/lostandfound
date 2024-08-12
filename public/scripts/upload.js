@@ -135,7 +135,7 @@ sortedBuildings.forEach(building => {
         showNotification("Form submitted successfully");
         setTimeout(() => {
             window.location.href = '/';
-        }, 3000); // 3-second delay
+        }, 2000); // 2-second delay
         })
         .catch(error => {
         console.error('Error:', error);

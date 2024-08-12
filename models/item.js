@@ -9,7 +9,8 @@ const itemSchema = new mongoose.Schema({
   images: [{ filename: String, path: String, originalname: String }],
   uploadDate: {
     type:Date,
-    default: Date.now
+    default: Date.now,
+    expires: '90d'
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
