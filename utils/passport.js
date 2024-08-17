@@ -3,20 +3,18 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 
 module.exports = function (passport) {
-  passport.use(new GoogleStrategy(
-      {
+  passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3000/auth/google/callback',
-				passReqToCallback: true,
-                userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // Explicitly use the v3 userinfo endpoint
-    scope: ['profile', 'email'] // Ensure correct scopes are requested
+        callbackURL: 'https://conversely-main-frog.ngrok-free.app/auth/google/callback',
+        userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // Explicitly use the v3 userinfo endpoint
+        scope: ['profile', 'email'] // Ensure correct scopes are requested
       },    
       async (accessToken, refreshToken, profile, done) => {
+        if (!profile) {
+          return done(new Error('No profile returned from Google'), null);
+        }
         //get the user data from google 
-        console.log('Access Token:', accessToken);
-  console.log('Refresh Token:', refreshToken);
-  console.log('Profile:', profile); 
         const newUser = {
           googleId: profile.id,
           displayName: profile.displayName,
@@ -51,9 +49,12 @@ module.exports = function (passport) {
   })
 
   // used to deserialize the user
-  passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-			done(err, user);
-		});
-  })
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await User.findById(id); 
+      done(null, user); // Pass the user to done callback
+    } catch (err) {
+      done(err, null); // Handle the error
+    }
+  });
 }

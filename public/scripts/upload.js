@@ -158,3 +158,13 @@ sortedBuildings.forEach(building => {
         this.style.height = `${this.scrollHeight}px`;
     });
 });
+
+function handleClick() {
+    var button = document.getElementById('submit-button');
+    button.disabled = true;
+    button.innerText = 'Submitting...';
+    setTimeout(function() {
+      button.disabled = false;
+      button.innerText = 'Submit';
+    }, 300000); 
+  }
