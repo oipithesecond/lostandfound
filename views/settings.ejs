@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./settings.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <div class="upar">
+        <a href="./home2.html">
+            <img src="./FoundIt! logo.png" alt="FoundIt! logo" class="logo">
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="top">
+                <i class="bx bx-menu" id="btn"></i>
+            </div>
+            <ul>
+                <li>
+                    <a href="#" id="profile-btn">
+                        <i class="bx bx-face"></i>
+                        <span class="nav-item">Profile</span>
+                    </a>
+                    <span class="tooltip">Profile</span>
+                </li>
+                <li>
+                    <a href="#" id="appearance-btn">
+                        <i class="bx bx-palette"></i>
+                        <span class="nav-item">Appearance</span>
+                    </a>
+                    <span class="tooltip">Appearance</span>
+                </li>
+                <li>
+                    <a href="#" id="treatus-btn">
+                        <i class="bx bx-coffee-togo"></i>
+                        <span class="nav-item">Treat Us</span>
+                    </a>
+                    <span class="tooltip">Treat Us</span>
+                </li>
+                <li>
+                    <a href="#" id="reportbug-btn">
+                        <i class="bx bx-bug"></i>
+                        <span class="nav-item">Report Bug</span>
+                    </a>
+                    <span class="tooltip">Report Bug</span>
+                </li>
+                <li>
+                    <a href="#" id="help-btn">
+                        <i class="bx bx-help-circle"></i>
+                        <span class="nav-item">Help</span>
+                    </a>
+                    <span class="tooltip">Help</span>
+                </li>
+                <li>
+                    <a href="#" id="logout-btn">
+                        <i class="bx bx-log-out"></i>
+                        <span class="nav-item">Logout</span>
+                    </a>
+                    <span class="tooltip">Logout</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="content" id="profile-content">
+                <img src="https://picsum.photos/250/250" alt="">
+                <div id="hello">Hi, 
+                    <span id="username">User</span>
+                </div>
+
+                <div class="main">
+                    <div class="yourposts">YOUR POSTS</div>
+                    <div class="post">
+                        <img src="https://picsum.photos/260/280" alt="Post Image">
+                        <div class="post-details">
+                            <h3>Aditya</h3>
+                            <p class="para">found at Rock Plaza, Badminton</p>
+                            <div class="date" data-post-date="2023-08-10"></div>
+                            <a href="./FoundIt! logo.png" class="link">View Details</a>
+                            <button class="delete-btn">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <img src="https://picsum.photos/260/280" alt="Post Image">
+                        <div class="post-details">
+                            <h3>Aditya</h3>
+                            <p class="para">found at Rock Plaza, Badminton</p>
+                            <div class="date" data-post-date="2023-08-10"></div>
+                            <a href="./FoundIt! logo.png" class="link">View Details</a>
+                            <button class="delete-btn">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <img src="https://picsum.photos/260/280" alt="Post Image">
+                        <div class="post-details">
+                            <h3>Aditya</h3>
+                            <p class="para">found at Rock Plaza, Badminton</p>
+                            <div class="date" data-post-date="2023-08-10"></div>
+                            <a href="./FoundIt! logo.png" class="link">View Details</a>
+                            <button class="delete-btn">Delete</button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="content" id="appearance-content" style="display:none;">
+                <h2>Appearance Content</h2>
+                <p>This is Appearance Content D</p>
+                <p>This is Appearance Content E</p>
+            </div>
+
+            <div class="content" id="treatus-content" style="display:none;">
+                <p>coming soon...hope so</p>
+            </div>
+
+            <div class="content" id="reportbug-content">
+                <div class="report-bug-container">
+                    <h1>Report a Bug</h1>
+                    <form action="/submit-bug-report" method="post">
+                        <label for="issue-type">Type of Issue:</label>
+                        <select id="issue-type" name="issue-type" required>
+                            <option value="">Select an option</option>
+                            <option value="login">Login Issue</option>
+                            <option value="upload">Upload Issue</option>
+                            <option value="profile">Profile Issue</option>
+                            <option value="display">Item Display Issue</option>
+                            <option value="other">Other</option>
+                        </select>
+            
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="5"
+                            required></textarea>
+            
+                        <button type="submit">Submit Report</button>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="content" id="help-content" style="display:none;">
+                <h2>Help Content</h2>
+                <p>This is Help Content J</p>
+                <p>This is Help Content K</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./settings.js"></script>
+</body>
+
+</html>

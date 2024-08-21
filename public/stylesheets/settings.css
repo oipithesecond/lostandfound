@@ -1,0 +1,413 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto Flex", sans-serif;
+    background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
+    overflow-x: hidden;
+}
+
+.upar {
+    position: fixed;
+    background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
+    width: 100vw;
+    height: 10vh;
+    z-index: 1000;
+}
+
+.upar img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10.5vh;
+    transition: transform 0.5s;
+}
+
+.upar img:hover {
+    animation: animateLogo 0.5s ease-in-out;
+}
+
+@keyframes animateLogo {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(-5deg);
+    }
+
+    30% {
+        transform: rotate(3deg);
+    }
+
+    45% {
+        transform: rotate(-3deg);
+    }
+
+    60% {
+        transform: rotate(2deg);
+    }
+
+    75% {
+        transform: rotate(-1deg);
+    }
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    margin-top: 10vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 90vh;
+    width: 80px;
+    background-color: rgb(38, 38, 38);
+    padding: .4rem .8rem;
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    width: 250px;
+}
+
+.sidebar #btn {
+    position: absolute;
+    color: whitesmoke;
+    top: .4rem;
+    left: 50%;
+    font-size: 22px;
+    transform: translate(-50%);
+    cursor: pointer;
+}
+
+.sidebar.active #btn {
+    left: 90%;
+}
+
+.sidebar ul {
+    margin-top: 3rem;
+}
+
+.sidebar ul li {
+    position: relative;
+    list-style-type: none;
+    width: 80%;
+    margin: 0.8rem auto;
+    line-height: 50px;
+}
+
+.sidebar ul li a {
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    transition: all 0.3s ease;
+    height: 60px;
+}
+
+.sidebar ul li a:hover {
+    color: #7AA128;
+}
+
+.sidebar ul li a i {
+    font-size: 22px;
+    margin-right: 1rem;
+}
+
+.sidebar .nav-item {
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sidebar.active .nav-item {
+    opacity: 1;
+}
+
+.sidebar ul li .tooltip {
+    position: absolute;
+    left: 125px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.6rem;
+    padding: 0.4rem 1.2rem;
+    line-height: 1.8rem;
+    background-color: #555;
+    color: whitesmoke;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sidebar ul li:hover .tooltip {
+    opacity: 1;
+}
+
+.sidebar.active ul li .tooltip {
+    display: none;
+}
+
+.main-content {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+    padding: 2rem;
+    transition: margin-left 0.5s ease, width 0.5s ease;
+}
+
+.sidebar.active~.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+}
+
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+
+
+#profile-content
+{
+    padding-top: 12vh;
+    color: white;
+}
+
+#profile-content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+    border-width: 2px;
+}
+
+#hello {
+    padding-left: 10px;
+    display: inline;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#hello #username
+{
+    color: #7AA128;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2.7rem;
+}
+
+.post {
+    display: flex;
+    align-items: center;
+    background-color: rgb(38, 38, 38);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.post img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    margin-right: 1rem;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+
+.post-details h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.post-details .para {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.post:hover {
+    box-shadow: 0 2px 10px whitesmoke;
+    transform: scale(1.005);
+    transition: transform 0.3s ease-in-out;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: whitesmoke;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #e60000;
+}
+
+.yourposts
+{
+    color: #999;
+    font-size: 14px;
+}
+
+a
+{
+    text-decoration: none;
+    color: #7AA128;
+}
+
+
+#treatus-content
+{
+    padding-top: 12vh;
+    color: whitesmoke;
+}
+
+/* Add to your existing CSS file */
+
+/* Report Bug Section Styling */
+#reportbug-content {
+    display: flex;
+    padding-top: 12vh;
+}
+
+.report-bug-container {
+    color: #999;
+    width: 100%;
+    max-width: 600px;
+}
+
+.report-bug-container h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #7AA128;
+}
+
+.report-bug-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.report-bug-container select,
+.report-bug-container textarea,
+.report-bug-container input {
+    background-color: rgb(38, 38, 38);
+    color: whitesmoke;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 3px solid purple;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
+.report-bug-container button {
+    background-color: #007bff;
+    color: whitesmoke;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.report-bug-container button:hover {
+    background-color: #0056b3;
+}
+
+textarea {
+    overflow: hidden;
+    resize: none;
+}
+
+.report-bug-container select:hover, .report-bug-container textarea:hover {
+    box-shadow: 0 2px 10px whitesmoke;
+    transform: scale(1.005);
+    transition: transform 0.3s ease-in-out;
+}
+
+#logout-btn
+{
+    margin-top: 30vh;
+}
+
+#logout-btn:hover
+{
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .sidebar ul li .tooltip {
+        display: none;
+    }
+
+    .upar {
+        height: 7vh;
+    }
+
+    .upar img {
+        height: 7vh;
+    }
+
+    .sidebar {
+        margin-top: 7vh;
+        height: 93vh;
+    }
+
+    .sidebar.active~.main-content {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+    }
+
+    a {
+        width: 20vw;
+    }
+
+    #profile-content,  #treatus-content, #reportbug-content, #help-content
+    {
+        padding-top: 8vh;
+    }
+
+    #logout-btn {
+        margin-top: 32vh;
+    }
+}
