@@ -52,7 +52,7 @@ app.get("/upload", ensureAuth, function(req,res){
 app.get("/profile/", ensureAuth, async (req,res)=>{
   try {
     let user = await userModel.findOne({ email: req.user.email }).populate("posts");
-    res.render("profile", { user });
+    res.render("settings", { user });
   } catch (error) {
     console.error("Error fetching user profile:", error);
     res.status(500).send("Error loading the profile page.");

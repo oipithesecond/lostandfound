@@ -12,6 +12,9 @@ const sidebarButtons = document.querySelectorAll('.sidebar ul li a');
 
 sidebarButtons.forEach(button => {
     button.addEventListener('click', function (e) {
+        if (button.id === 'logout-btn') {
+            return;  
+        }
         e.preventDefault();
 
         // Remove active class from all content sections
@@ -33,20 +36,20 @@ sidebarButtons.forEach(button => {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const dateElements = document.querySelectorAll('.date');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const dateElements = document.querySelectorAll('.date');
 
-    dateElements.forEach(function(dateElement) {
-        const postDateStr = dateElement.getAttribute('data-post-date');
-        const postDate = new Date(postDateStr);
+//     dateElements.forEach(function(dateElement) {
+//         const postDateStr = dateElement.getAttribute('data-post-date');
+//         const postDate = new Date(postDateStr);
 
-        const currentDate = new Date();
-        const timeDiff = currentDate.getTime() - postDate.getTime();
-        const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+//         const currentDate = new Date();
+//         const timeDiff = currentDate.getTime() - postDate.getTime();
+//         const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
 
-        dateElement.textContent = `Posted ${daysDiff} days ago`;
-    });
-});
+//         dateElement.textContent = `Posted ${daysDiff} days ago`;
+//     });
+// });
 
 document.addEventListener('DOMContentLoaded', function () {
     const textarea = document.getElementById('description');

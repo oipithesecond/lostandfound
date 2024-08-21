@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./settings.css">
+    <title>Profile</title>
+    <link rel="stylesheet" href="stylesheets/settings.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
         rel="stylesheet">
@@ -15,8 +15,8 @@
 
 <body>
     <div class="upar">
-        <a href="./home2.html">
-            <img src="./FoundIt! logo.png" alt="FoundIt! logo" class="logo">
+        <a href="/">
+            <img src="images/FoundIt! logo.png" alt="FoundIt! logo" class="logo">
         </a>
     </div>
 
@@ -62,7 +62,7 @@
                     <span class="tooltip">Help</span>
                 </li>
                 <li>
-                    <a href="#" id="logout-btn">
+                    <a href="logout" id="logout-btn">
                         <i class="bx bx-log-out"></i>
                         <span class="nav-item">Logout</span>
                     </a>
@@ -73,45 +73,35 @@
 
         <div class="main-content">
             <div class="content" id="profile-content">
-                <img src="https://picsum.photos/250/250" alt="">
+                <img src="<%= user.image %>" alt="">
                 <div id="hello">Hi, 
-                    <span id="username">User</span>
+                    <span id="username"><%= user.firstName %></span>
                 </div>
 
                 <div class="main">
                     <div class="yourposts">YOUR POSTS</div>
+                    <%user.posts.forEach(function(post){ %>
                     <div class="post">
-                        <img src="https://picsum.photos/260/280" alt="Post Image">
+                        <% post.images.forEach(function(image) { %>
+                        <img src="/images/itemimage/<%=image.filename%>" alt="Post Image">
+                        <% }) %>
                         <div class="post-details">
-                            <h3>Aditya</h3>
-                            <p class="para">found at Rock Plaza, Badminton</p>
-                            <div class="date" data-post-date="2023-08-10"></div>
-                            <a href="./FoundIt! logo.png" class="link">View Details</a>
-                            <button class="delete-btn">Delete</button>
+                            <h3><%= post.title %></h3>
+                            <p class="para">found at <%= post.building %>, <%= post.specificArea %></p>
+                            <% 
+                                const currentDate = new Date();
+                                const uploadDate = new Date(post.uploadDate);
+                                const timeDiff = currentDate.getTime() - uploadDate.getTime();
+                                const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+                            %>
+                            <div class="date"><%= daysDiff %> days ago</div>
+                            <a href="/items/<%= post._id %>" class="link">View Details</a>
+                            <a href="/delete/<%= post._id %>"><button class="delete-btn">Delete</button></a>
                         </div>
                     </div>
+                    <% }) %>
 
-                    <div class="post">
-                        <img src="https://picsum.photos/260/280" alt="Post Image">
-                        <div class="post-details">
-                            <h3>Aditya</h3>
-                            <p class="para">found at Rock Plaza, Badminton</p>
-                            <div class="date" data-post-date="2023-08-10"></div>
-                            <a href="./FoundIt! logo.png" class="link">View Details</a>
-                            <button class="delete-btn">Delete</button>
-                        </div>
-                    </div>
-
-                    <div class="post">
-                        <img src="https://picsum.photos/260/280" alt="Post Image">
-                        <div class="post-details">
-                            <h3>Aditya</h3>
-                            <p class="para">found at Rock Plaza, Badminton</p>
-                            <div class="date" data-post-date="2023-08-10"></div>
-                            <a href="./FoundIt! logo.png" class="link">View Details</a>
-                            <button class="delete-btn">Delete</button>
-                        </div>
-                    </div>
+                    
 
 
 
@@ -161,7 +151,7 @@
         </div>
     </div>
 
-    <script src="./settings.js"></script>
+    <script src="scripts/settings.js"></script>
 </body>
 
 </html>
