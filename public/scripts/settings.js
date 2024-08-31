@@ -67,3 +67,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial adjustment for pre-filled content
     adjustTextareaHeight();
 });
+
+
+function startCountdown() {
+    const countdownElement = document.getElementById('countdown');
+    if (!countdownElement) return;
+
+    let timeLeft = parseInt(countdownElement.innerText, 10);
+
+    const interval = setInterval(() => {
+      timeLeft -= 1;
+      countdownElement.innerText = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        document.getElementById('cooldown-message').innerText = "You can now post again.";
+      }
+    }, 1000);
+  }
+
+  // Start the countdown if the element is present
+  document.addEventListener('DOMContentLoaded', startCountdown);

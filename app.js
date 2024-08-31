@@ -16,7 +16,8 @@ const { upload, compressAndSaveImages } = require("./utils/multerconfig");
 require('./utils/passport')(passport)
 const {generateToken} = require("./utils/generatetoken")
 const { ensureAuth, ensureGuest } = require('./middleware/newauth')
-const limiter = require('./middleware/rateLimiter')
+const postLimiter = require('./middleware/PostrateLimiter')
+const bugLimiter = require('./middleware/BugrateLimiter')
 // const Auth = require('./middleware/oldAuth')
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -64,7 +65,7 @@ app.get("/items/:id", ensureAuth, async (req,res)=>{
     res.render("item",{items})
 })
 
-app.post('/create', ensureAuth, upload.array('images', 10), compressAndSaveImages, limiter, async (req, res) => {
+app.post('/create', ensureAuth, postLimiter, upload.array('images', 10), compressAndSaveImages, async (req, res) => {
   try {
   let user = await userModel.findOne({email: req.user.email})
     let { title, description, itemType, building, specificArea } = req.body
@@ -105,6 +106,23 @@ app.get("/delete/:id", ensureAuth, async (req, res) => {
     console.error("Error deleting item:", error);
     res.status(500).send("Error deleting the item.");
   }
+})
+app.post('/submit-bug-report', ensureAuth, bugLimiter, (req, res) => {
+  const issueType = req.body['issue-type']
+  const description = req.body.description
+  const reporterName = req.user.lastName
+
+  const report = `Reporter: ${reporterName}\nIssue Type: ${issueType}\nDescription: ${description}\n\n`
+
+  const filePath = path.join(__dirname, 'issues.txt')
+
+  fs.appendFile(filePath, report, (err) => {
+    if (err) {
+      res.status(500).send('An error occurred while submitting the bug report.')
+    } else {
+      res.redirect('/');
+    }
+  });
 });
 
 

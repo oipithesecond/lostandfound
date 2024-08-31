@@ -159,12 +159,12 @@ sortedBuildings.forEach(building => {
     });
 });
 
-function handleClick() {
-    var button = document.getElementById('submit-button');
-    button.disabled = true;
-    button.innerText = 'Submitting...';
-    setTimeout(function() {
-      button.disabled = false;
-      button.innerText = 'Submit';
-    }, 300000); 
-  }
+// function handleClick() {
+//     var button = document.getElementById('submit-button');
+//     button.disabled = true;
+//     button.innerText = 'Submitting...';
+//     setTimeout(function() {
+//       button.disabled = false;
+//       button.innerText = 'Submit';
+//     }, 300000); 
+//   }

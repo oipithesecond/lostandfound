@@ -355,7 +355,7 @@ ul
 {
     .item:hover 
     {
-        display: none;
+        display: block;
     }
 
     .sidebar ul li:hover .tooltip 
