@@ -82,9 +82,9 @@
                     <div class="yourposts">YOUR POSTS</div>
                     <%user.posts.forEach(function(post){ %>
                     <div class="post">
-                        <% post.images.forEach(function(image) { %>
-                        <img src="/images/itemimage/<%=image.filename%>" alt="Post Image">
-                        <% }) %>
+ 
+                        <img src="/images/itemimage/<%=post.images[0].filename%>" alt="Post Image">
+
                         <div class="post-details">
                             <h3><%= post.title %></h3>
                             <p class="para">found at <%= post.building %>, <%= post.specificArea %></p>

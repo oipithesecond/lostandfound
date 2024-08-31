@@ -11,7 +11,8 @@ const app = express()
 const connectDB = require("./utils/mongooseconfig")
 const itemModel = require("./models/item")
 const userModel = require("./models/user")
-const multerConfig = require("./utils/multerconfig")
+// const multerConfig = require("./utils/multerconfig")
+const { upload, compressAndSaveImages } = require("./utils/multerconfig");
 require('./utils/passport')(passport)
 const {generateToken} = require("./utils/generatetoken")
 const { ensureAuth, ensureGuest } = require('./middleware/newauth')
@@ -63,7 +64,7 @@ app.get("/items/:id", ensureAuth, async (req,res)=>{
     res.render("item",{items})
 })
 
-app.post('/create', ensureAuth, multerConfig.array('images', 10), limiter, async (req, res) => {
+app.post('/create', ensureAuth, upload.array('images', 10), compressAndSaveImages, limiter, async (req, res) => {
   try {
   let user = await userModel.findOne({email: req.user.email})
     let { title, description, itemType, building, specificArea } = req.body
