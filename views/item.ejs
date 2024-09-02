@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost & Found</title>
-    <link rel="stylesheet" href="stylesheets/index.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -19,11 +18,16 @@
         <h2 class="text-2xl "><%= item.itemType%></h2>
         <h2 class="text-2xl "><%= item.building %> <%= item.specificArea %></h2>
         <h2 class="text-3xl "><%= item.description %></h2>
+        <h2 class="text-3xl "><%= item.user.email %> </h2>
         <% item.images.forEach(function(image) { %>
             <img src="/images/itemimage/<%=image.filename%>" alt="<%= image.originalname %>">
             <% }) %>
+            <!-- <input type="text" id="emailSubject" placeholder="Enter subject">
+            <textarea id="emailBody" placeholder="Enter your message"></textarea> -->
+            <!-- <button onclick="sendEmail()">Send Email</button> -->
+            <button id="sendEmailButton" data-user-email="<%= item.user.email %>">Send Email</button>
     </div>
     <% }) %>
-    <script src="/index.js"></script>
+    <script src="../scripts/itemtest.js"></script>
 </body>
 </html>
