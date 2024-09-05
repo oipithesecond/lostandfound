@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Display</title>
+    <link rel="stylesheet" href="./fitem.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="upar">
+        <a href="./login3.html">
+            <img src="./FoundIt! logo.png" alt="Logo">
+        </a>
+    </div>
+
+    <div class="content">
+        <div class="item-display">
+            <div class="header">
+                <img src="https://picsum.photos/100/100" alt="User Profile Pic" class="profile-pic">
+                <span class="posted-by">Posted by <strong id="poster-name">John Doe</strong></span>
+                <span class="posted-on">Posted on <span id="posted-date">August 25, 2024</span></span>
+            </div>
+
+
+            <div>
+            <div class="images">
+                <img src="https://picsum.photos/200/300" alt="Item Image 1" class="item-image">
+            </div>
+            <div class="image-controls">
+                <button class="left-button">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+                <button class="right-button">
+                    <i class='bx bx-chevron-right'></i>
+                </button>
+            </div>
+            </div>
+
+            <div class="popup-images">
+                <button id="exit-button">
+                    <i class="bx bx-x-circle"></i>
+                </button>
+                <img src="" alt="Popup Image" class="popup-image">
+            </div>
+
+            <div class="main-content">
+                <div class="left-side">
+                    <div class="section title">
+                        <h2>
+                            <id="title">Title
+                        </h2>
+                        </h2>
+                    </div>
+                    <div class="section item-type">
+                        <h2>Type of Item</h2>
+                        <p id="item-type">Type of Item</p>
+                    </div>
+                    <div class="section location">
+                        <h2>FoundIt!</h2>
+                        <p id="item-location">Found at: <span id="location">Location</span>, <span id="area">Area</span></p>
+                    </div>
+                </div>
+
+                <div class="right-side">
+                    <div class="section description">
+                        <h2>Description</h2>
+                        <p id="item-description">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi sint voluptatibus eum iure debitis nihil iste deleniti molestiae, optio blanditiis! Rerum tempora voluptas doloribus obcaecati, neque aspernatur nemo atque accusantium?
+                        </p>
+                    </div>
+
+                    <div class="section additional-details">
+                        <button id="email-button">Contact <strong id="poster-first-name">John</strong></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./fitem.js"></script>
+</body>
+
+</html>
