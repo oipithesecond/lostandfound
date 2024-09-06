@@ -1,33 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost & Found</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Item Display</title>
+    <link rel="stylesheet" href="/stylesheets/item.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Lost & Found portal VITAP</h1>
-    <a class="uploadpagebutton" href="upload"><button>found a lost item?</button></a>
-    <a class="profilepagebutton" href="profile"><button>your profile</button></a>
-    <a class="logout" href="logout"><button>logout</button></a>
-    <div class="main w-full min-h-screen bg-zinc-900 p-10 text-white">
-        <% items.forEach(function(item){ %>
-        <h1 class="text-4xl tracking-tighter"><%= item.title%></h1>
-        <h1 class="text-2xl">posted by <%= item.user.firstName %> at <%= new Date(item.uploadDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) %></h1>
-        <h2 class="text-2xl "><%= item.itemType%></h2>
-        <h2 class="text-2xl "><%= item.building %> <%= item.specificArea %></h2>
-        <h2 class="text-3xl "><%= item.description %></h2>
-        <h2 class="text-3xl "><%= item.user.email %> </h2>
-        <% item.images.forEach(function(image) { %>
-            <img src="/images/itemimage/<%=image.filename%>" alt="<%= image.originalname %>">
-            <% }) %>
-            <!-- <input type="text" id="emailSubject" placeholder="Enter subject">
-            <textarea id="emailBody" placeholder="Enter your message"></textarea> -->
-            <!-- <button onclick="sendEmail()">Send Email</button> -->
-            <button id="sendEmailButton" data-user-email="<%= item.user.email %>">Send Email</button>
+    <div class="upar">
+        <a href="/">
+            <img src="/images/FoundIt! logo.png" alt="Logo">
+        </a>
     </div>
-    <% }) %>
-    <script src="../scripts/itemtest.js"></script>
+
+    <div class="content">
+        <% items.forEach(function(item){ %>
+        <div class="item-display">
+            <div class="header">
+                <img src="<%= item.user.image %>" alt="User Profile Pic" class="profile-pic">
+                <span class="posted-by">Posted by <strong id="poster-name"><%= item.user.firstName %></strong></span>
+                <span class="posted-on">Posted on <span id="posted-date"><%= new Date(item.uploadDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) %></span></span>
+            </div>
+
+
+            <div>
+            <div class="images">
+                <% item.images.forEach(function(image) { %>
+                <img src="/images/itemimage/<%=image.filename%>" alt="Item Image" class="item-image">
+                <% }) %>
+            </div>
+            <div class="image-controls">
+                <button class="left-button">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+                <button class="right-button">
+                    <i class='bx bx-chevron-right'></i>
+                </button>
+            </div>
+            </div>
+
+            <div class="popup-images">
+                <button id="exit-button">
+                    <i class="bx bx-x-circle"></i>
+                </button>
+                <img src="" alt="Popup Image" class="popup-image">
+            </div>
+
+            <div class="main-content">
+                <div class="left-side">
+                    <div class="section title">
+                        <h2>
+                            <id="title"><%= item.title%>
+                        </h2>
+                        </h2>
+                    </div>
+                    <div class="section item-type">
+                        <h2>Type of Item</h2>
+                        <p id="item-type"><%= item.itemType%></p>
+                    </div>
+                    <div class="section location">
+                        <h2>FoundIt!</h2>
+                        <p id="item-location">Found at: <span id="location"><%= item.building %> </span>, <span id="area"><%= item.specificArea %></span></p>
+                    </div>
+                </div>
+
+                <div class="right-side">
+                    <div class="section description">
+                        <h2>Description</h2>
+                        <p id="item-description">
+                            <%= item.description %>
+                        </p>
+                    </div>
+
+                    <div class="section additional-details">
+                        <button id="sendEmailButton" data-user-email="<%= item.user.email %>">Contact Poster</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <script src="/scripts/item.js"></script>
 </body>
+
 </html>

@@ -224,7 +224,7 @@ body
     color: #ccc;
 }
 
-#email-button
+#sendEmailButton
 {
     position: relative;
     display: inline-block;
@@ -241,7 +241,7 @@ body
     transform: translateX(-50%);
 }
 
-#email-button:hover 
+#sendEmailButton:hover 
 {
     background-color: #0056b3;
 }
