@@ -188,8 +188,8 @@ body
 {
     position: fixed;
     margin-top: 5vh;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 48vw;
+    max-height: 48vh;
     border: 2px solid #7AA128;
     border-radius: 5px;
     object-fit: cover;
