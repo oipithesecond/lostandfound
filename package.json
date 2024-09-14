@@ -4,12 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "oipithesecond",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "config": "^3.3.12",
     "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",

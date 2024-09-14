@@ -135,7 +135,7 @@ sortedBuildings.forEach(building => {
         showNotification("Form submitted successfully");
         setTimeout(() => {
             window.location.href = '/';
-        }, 1500); // 2-second delay
+        }, 250); // 2-second delay
         })
         .catch(error => {
         console.error('Error:', error);
@@ -159,12 +159,12 @@ sortedBuildings.forEach(building => {
     });
 });
 
-// function handleClick() {
-//     var button = document.getElementById('submit-button');
-//     button.disabled = true;
-//     button.innerText = 'Submitting...';
-//     setTimeout(function() {
-//       button.disabled = false;
-//       button.innerText = 'Submit';
-//     }, 300000); 
-//   }
+function handleClick() {
+    var button = document.getElementById('submit-button');
+    button.disabled = true;
+    button.innerText = 'Submitting...';
+    setTimeout(function() {
+      button.disabled = false;
+      button.innerText = 'Submit';
+    }, 10000); 
+  }
