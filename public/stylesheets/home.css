@@ -203,7 +203,7 @@ body
 ul li.settings 
 {
     position: relative;
-    margin-top: 58vh;
+    margin-top: 55vh;
     
 }
 
@@ -398,6 +398,12 @@ ul
     {
         margin-left: 0;
         width: 10%;
+    }
+
+    ul li.settings 
+    {
+        margin-top: 58vh;
+    
     }
 }
 
