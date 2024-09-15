@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Display</title>
+    <title><%= items.length > 0 ? items[0].title : 'Item Display' %></title>
     <link rel="stylesheet" href="/stylesheets/item.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,7 +81,7 @@
                     <div class="section additional-details">
                         <button id="sendEmailButton" 
                             data-user-email="<%= item.user.email %>" 
-                            data-email-body="This E-mail is related to this post on Foundit: conversely-main-frog.ngrok-free.app/items/<%=item._id%>">
+                            data-email-body="This E-mail is related to this post on Foundit: <%= req.protocol %>://<%= req.get('host') %>/items/<%= item._id %>">
                             Contact Poster
                         </button>
                     </div>

@@ -133,7 +133,15 @@ sortedBuildings.forEach(building => {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 429) {
+                // Redirect if rate limit exceeded
+                window.location.href = '/rate-limit-exceeded';
+            } else if (!response.ok) {
+                throw new Error('Error submitting form');
+            }
+            return response.json();
+        })
         .then(data => {
         console.log(data);
         showNotification("Form submitted successfully");
@@ -163,12 +171,12 @@ sortedBuildings.forEach(building => {
     });
 });
 
-function handleClick() {
-    var button = document.getElementById('submit-button');
-    button.disabled = true;
-    button.innerText = 'Submitting...';
-    setTimeout(function() {
-      button.disabled = false;
-      button.innerText = 'Submit';
-    }, 10000); 
-  }
+// function handleClick() {
+//     var button = document.getElementById('submit-button');
+//     button.disabled = true;
+//     button.innerText = 'Submitting...';
+//     setTimeout(function() {
+//       button.disabled = false;
+//       button.innerText = 'Submit';
+//     }, 10000); 
+//   }

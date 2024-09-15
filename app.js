@@ -62,7 +62,7 @@ app.get("/profile/", ensureAuth, async (req,res)=>{
 })
 app.get("/items/:id", ensureAuth, async (req,res)=>{
     let items = await itemModel.find({_id:req.params.id}).populate("user")
-    res.render("item",{items})
+    res.render("item",{items,req})
 })
 
 app.post('/create', ensureAuth, postLimiter, upload.array('images', 10), compressAndSaveImages, async (req, res) => {
@@ -124,6 +124,10 @@ app.post('/submit-bug-report', ensureAuth, bugLimiter, (req, res) => {
     }
   });
 });
+
+app.get('/rate-limit-exceeded', ensureAuth, (req,res) => {
+  res.render('rateLimitExceeded')
+})
 
 
 const PORT =  process.env.PORT || 3000

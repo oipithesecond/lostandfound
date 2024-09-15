@@ -5,7 +5,9 @@ const app = express();
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 1, 
-  message: 'You can only post once every minute',
+  handler: function (req, res) {
+    res.status(429).json({ message: 'Rate limit exceeded' })
+  }
 })
 
 module.exports = limiter
