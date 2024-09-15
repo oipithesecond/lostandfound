@@ -17,21 +17,22 @@ sidebarButtons.forEach(button => {
         }
         e.preventDefault();
 
-        // Remove active class from all content sections
-        const allContent = document.querySelectorAll('.content');
-        allContent.forEach(content => {
-            content.style.display = 'none';
-            content.classList.remove('active');
-        });
+        // // Remove active class from all content sections
+        // const allContent = document.querySelectorAll('.content');
+        // allContent.forEach(content => {
+        //     content.style.display = 'none';
+        //     content.classList.remove('active');
+        // });
 
-        // Add active class to the clicked button's content section
-        const buttonId = button.id.split('-btn')[0];
-        const contentId = `${buttonId}-content`;
-        const selectedContent = document.getElementById(contentId);
-        if (selectedContent) {
-            selectedContent.style.display = 'block';
-            selectedContent.classList.add('active');
-        }
+        // // Add active class to the clicked button's content section
+        // const buttonId = button.id.split('-btn')[0];
+        // const contentId = `${buttonId}-content`;
+        // const selectedContent = document.getElementById(contentId);
+        // if (selectedContent) {
+        //     selectedContent.style.display = 'block';
+        //     selectedContent.classList.add('active');
+        // }
+        
     });
 });
 
@@ -88,3 +89,54 @@ function startCountdown() {
 
   // Start the countdown if the element is present
   document.addEventListener('DOMContentLoaded', startCountdown);
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const profileBtn = document.getElementById("profile-btn");
+    const appearanceBtn = document.getElementById("appearance-btn");
+    const treatUsBtn = document.getElementById("treatus-btn");
+    const reportBugBtn = document.getElementById("reportbug-btn");
+    const helpBtn = document.getElementById("help-btn");
+
+    const profileContent = document.getElementById("profile-content");
+    const appearanceContent = document.getElementById("appearance-content");
+    const treatUsContent = document.getElementById("treatus-content");
+    const reportBugContent = document.getElementById("reportbug-content");
+    const helpContent = document.getElementById("help-content");
+
+    // Function to hide all content sections
+    function hideAllContents() {
+        profileContent.style.display = "none";
+        appearanceContent.style.display = "none";
+        treatUsContent.style.display = "none";
+        reportBugContent.style.display = "none";
+        helpContent.style.display = "none";
+    }
+     hideAllContents();
+    profileContent.style.display = "block"; 
+
+    // Event listeners for each sidebar button
+    profileBtn.addEventListener("click", function() {
+        hideAllContents();
+        profileContent.style.display = "block";
+    });
+
+    appearanceBtn.addEventListener("click", function() {
+        hideAllContents();
+        appearanceContent.style.display = "block";
+    });
+
+    treatUsBtn.addEventListener("click", function() {
+        hideAllContents();
+        treatUsContent.style.display = "block";
+    });
+
+    reportBugBtn.addEventListener("click", function() {
+        hideAllContents();
+        reportBugContent.style.display = "block";
+    });
+
+    helpBtn.addEventListener("click", function() {
+        hideAllContents();
+        helpContent.style.display = "block";
+    });
+});

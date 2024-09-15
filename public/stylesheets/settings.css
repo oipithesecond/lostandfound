@@ -179,8 +179,7 @@ body {
 }
 
 
-#profile-content
-{
+#profile-content {
     padding-top: 12vh;
     color: white;
 }
@@ -201,8 +200,7 @@ body {
     margin-bottom: 1rem;
 }
 
-#hello #username
-{
+#hello #username {
     color: #7AA128;
 }
 
@@ -279,21 +277,18 @@ body {
     background-color: #e60000;
 }
 
-.yourposts
-{
+.yourposts {
     color: #999;
     font-size: 14px;
 }
 
-a
-{
+a {
     text-decoration: none;
     color: #7AA128;
 }
 
 
-#treatus-content
-{
+#treatus-content {
     padding-top: 12vh;
     color: whitesmoke;
 }
@@ -359,19 +354,18 @@ textarea {
     resize: none;
 }
 
-.report-bug-container select:hover, .report-bug-container textarea:hover {
+.report-bug-container select:hover,
+.report-bug-container textarea:hover {
     box-shadow: 0 2px 10px whitesmoke;
     transform: scale(1.005);
     transition: transform 0.3s ease-in-out;
 }
 
-#logout-btn
-{
-    margin-top: 30vh;
+#logout-btn {
+    margin-top: 26vh;
 }
 
-#logout-btn:hover
-{
+#logout-btn:hover {
     color: red;
 }
 
@@ -402,12 +396,14 @@ textarea {
         width: 20vw;
     }
 
-    #profile-content,  #treatus-content, #reportbug-content, #help-content
-    {
+    #profile-content,
+    #treatus-content,
+    #reportbug-content,
+    #help-content {
         padding-top: 8vh;
     }
 
     #logout-btn {
-        margin-top: 32vh;
+        margin-top: 30vh;
     }
 }
