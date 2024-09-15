@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/compress.js/dist/compress.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         </a>
     </div>
     <div class="container">
-        <form action="/create" method="post" enctype="multipart/form-data">
+        <form id="upload-form" action="/create" method="post" enctype="multipart/form-data">
         <div class="title-section">
             <h2>Title</h2>
             <input type="text" id="title" name="title" placeholder="Title" required>
@@ -96,6 +97,54 @@
     </form>
     </div>
     <script src="scripts/upload.js"></script>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            const fileInput = document.getElementById('image-upload');
+            const files = fileInput.files;
+            const compress = new Compress();
+
+            if (files.length > 0) {
+                // Create a FormData object
+                const formData = new FormData();
+
+                // Compress and prepare files for upload
+                await compress.compress(files, {
+                    size: 4, // maximum size in MB
+                    quality: 0.10, // quality (0 to 1)
+                    maxWidth: 800, // max width
+                    maxHeight: 800, // max height
+                    resize: true // resize the image
+                }).then((data) => {
+                    data.forEach((compressedFile) => {
+                        formData.append('file', compressedFile.data, compressedFile.ext); // Add compressed files to FormData
+                    });
+                    
+                    // Append other form data
+                    formData.append('title', document.getElementById('title').value);
+                    formData.append('description', document.getElementById('description').value);
+                    // Add other form data as needed
+
+                    // Send the FormData to the server
+                    fetch('/create', {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.json())
+                      .then(result => {
+                          console.log(result);
+                          // Handle success (e.g., show a notification)
+                          document.getElementById('notification').innerText = 'Upload successful!';
+                      })
+                      .catch(error => {
+                          console.error('Error:', error);
+                          // Handle error (e.g., show an error message)
+                          document.getElementById('notification').innerText = 'Upload failed!';
+                      });
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
