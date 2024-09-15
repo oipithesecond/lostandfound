@@ -6,7 +6,7 @@ document.getElementById('btn').addEventListener('click', function () {
     const mainContent = document.querySelector('.main-content');
     mainContent.classList.toggle('active');
 });
-
+document.getElementById('profile-content').classList.add('active');
 // Handle sidebar button clicks
 const sidebarButtons = document.querySelectorAll('.sidebar ul li a');
 
