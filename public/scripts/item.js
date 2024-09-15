@@ -58,16 +58,17 @@ document.querySelector('#exit-button').onclick = () => {
 
 
 const sendEmailButton = document.getElementById('sendEmailButton');
+const emailBody = sendEmailButton.dataset.emailBody;
 const userEmail = sendEmailButton.dataset.userEmail;
 
+
 sendEmailButton.addEventListener('click', () => {
-  console.log(userEmail);
   const subject = "Foundit!"
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    const mailUrl = `mailto:${userEmail}?subject=${encodeURIComponent(subject)}`;  
+    const mailUrl = `mailto:${userEmail}?subject=${encodeURIComponent(subject)}?body=${encodeURIComponent(emailBody)}`;  
     window.location.href = mailUrl
   }else{
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${userEmail}&su=${subject}`;
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${userEmail}&su=${subject}&body=${encodeURIComponent(emailBody)}`;
   window.open(gmailUrl, '_blank');
 }
 })

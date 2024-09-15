@@ -79,7 +79,11 @@
                     </div>
 
                     <div class="section additional-details">
-                        <button id="sendEmailButton" data-user-email="<%= item.user.email %>">Contact Poster</button>
+                        <button id="sendEmailButton" 
+                            data-user-email="<%= item.user.email %>" 
+                            data-email-body="This E-mail is related to this post on Foundit: conversely-main-frog.ngrok-free.app/items/<%=item._id%>">
+                            Contact Poster
+                        </button>
                     </div>
                 </div>
             </div>
