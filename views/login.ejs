@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="/stylesheets/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
@@ -24,51 +27,33 @@
             <div class="content">
                 <p>
                     Welcome to FoundIt!<br><br>
-                    Have you misplaced something on the vibrant campus of VIT-AP? Fear not, because FoundIt! is your trusted ally in the
-                    search for lost treasures—excluding, of course, your elusive study buddy ;) Whether it's a forgotten notebook left in the
-                    library, a missing pair of headphones from the cafeteria, or something entirely unexpected, we're here to assist you in
-                    rediscovering what matters most to you. <br><br>Let's turn lost into found, one search at a time!
+                    Your ultimate solution to recover lost items on the VIT-AP campus. At FoundIt!, we understand how easy
+                    it is to misplace
+                    something in the hustle and bustle of university life. Whether it's a misplaced notebook in the library,
+                    forgotten
+                    headphones in the cafeteria, or anything in between, we’re here to help you find what matters most.
                 </p>
             </div>
             <div class="loghin">
                 <div class="form-structor">
-                    <div class="signup">
-                        <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-                        <div class="form-holder">
-                            <form action="/usersignup" method="post">
-                            <input type="text" class="input" placeholder="Full Name" name="name" />
-                            <input type="email" class="input" placeholder="VIT-AP Email" name="email"/>
-                            <input type="password" class="input" placeholder="Password" name="password"/>
-                        </div>
-                        <button type="submit" class="submit-btn">Sign up</button>
-                            </form>
-                            <div class="card" style="margin-top:100px;">
-                                <div class="card-content">
-                                    <div class="section" style="text-align: center;">
-                                        <a href="/auth/google" class="btn red darken-1">
-                                            <i class="fab fa-google left"></i> Log In With Google
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="login slide-up">
-                        <div class="center">
-                            <h2 class="form-title" id="login"><span>or</span>Log in</h2>
-                            <div class="form-holder">
-                                <form action="/userlogin" method="post">
-                                <input type="email" class="input" placeholder="VIT-AP Email" name="email" />
-                                <input type="password" class="input" placeholder="Password" name="password"/>
-                            </div>
-                            <button type="submit" class="submit-btn">Log in</button>
-                            </form>
+    
+                    <div class="google">
+                        <p>Please use your VIT-AP University email to Login</p>
+                        <div class="googlebutton">
+                            <a href="/auth/google" style="text-decoration: none;">
+                                <button class="google-auth">
+                                    <i class='bx bxl-google'></i>
+                                    <span class="loginauth">Login with Google</span>
+                                </button>
+                            </a>
                         </div>
                     </div>
+    
                 </div>
             </div>
         </div>
     </div>
-    <script src="scripts/login.js"></script>
+    <!-- <script src="./login.js"></script> -->
 </body>
 
 </html>
