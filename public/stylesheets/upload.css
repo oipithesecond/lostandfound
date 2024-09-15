@@ -253,3 +253,16 @@ select:focus
     font-size: 1rem;
     z-index: 1000;
 }
+
+@media (max-width: 570px)
+{
+    .upar 
+    {
+        height: 7vh;
+    }
+    
+    .upar img 
+    {
+        height: 7vh;
+    }
+}

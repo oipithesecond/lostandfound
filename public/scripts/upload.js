@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     "LH-2": ["Mess", "Other"],
 
-    "MH-1": ["Mess", "Other"],
+    "LH-3": ["Mess", "Other"],
+
+    "LH-4": ["Mess", "Other"],
 
     "MH-2": ["Mess", "Other"],
 
@@ -32,7 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     "MH-4": ["Mess", "Other"],
 
-    "MH-5": ["Mess", "Other"]
+    "MH-5": ["Mess", "Other"],
+
+    "MH-6": ["Mess", "Other"]
 
 }
 
