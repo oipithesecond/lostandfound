@@ -82,8 +82,11 @@
                     <div class="yourposts">YOUR POSTS</div>
                     <%user.posts.forEach(function(post){ %>
                     <div class="post">
- 
-                        <img src="/images/itemimage/<%=post.images[0].filename%>" alt="Post Image">
+                        <% if (post.images && post.images.length > 0) { %>
+                            <img src="/images/itemimage/<%= post.images[0].filename %>" alt="<%= post.images[0].originalname %>">
+                        <% } else { %>
+                            <img src="/images/Foundit! logo.png" alt="No Image Available">
+                        <% } %>
 
                         <div class="post-details">
                             <h3><%= post.title %></h3>

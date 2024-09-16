@@ -100,7 +100,11 @@
             <% items.reverse().forEach(function(item){ %>
             <a href="/items/<%= item._id %>">
                 <div class="item">
-                    <img src="/images/itemimage/<%=item.images[0].filename%>" alt="<%= item.images[0].originalname %>">
+                    <% if (item.images && item.images.length > 0) { %>
+                        <img src="/images/itemimage/<%= item.images[0].filename %>" alt="<%= item.images[0].originalname %>">
+                    <% } else { %>
+                        <img src="/images/Foundit! logo.png" alt="No Image Available">
+                    <% } %>
                     <div class="overlay"></div>
                     <h3><%= item.title %></h3>
                     <p class="para">found at <%= item.building %></p>
@@ -111,10 +115,11 @@
                 </div>
             </a>
             <% }) %>
-            <% } else { %>
-                <h3 class="text-white">no lost items yet</h3>
-            <% } %>
-        </div>
+        <% } else { %>
+            <h3 class="text-white">no lost items yet</h3>
+        <% } %>
+    </div>
+    
     </div>
 </body>
 
