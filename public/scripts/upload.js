@@ -9,36 +9,48 @@ document.addEventListener('DOMContentLoaded', function () {
     const imagePreview = document.getElementById('image-preview');
     const notification = document.getElementById('notification');
     const descriptionTextarea = document.getElementById('description');
-    const loadingOverlay = document.getElementById('loading-overlay'); // Overlay for loading screen
 
     // Buildings with specific areas
     const buildingsWithAreas = {
-        "Academic Block-1 (AB-1)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
-        "Academic Block-2 (AB-2)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
-        "Central Block": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor"],
-        "Rock Plaza": ["Cafeteria", "Badminton Court", "Tennis Court", "Gym", "2nd Floor"],
-        "LH-1": ["Mess", "Other"],
-        "LH-2": ["Mess", "Other"],
-        "LH-3": ["Mess", "Other"],
-        "LH-4": ["Mess", "Other"],
-        "MH-2": ["Mess", "Other"],
-        "MH-3": ["Mess", "Other"],
-        "MH-4": ["Mess", "Other"],
-        "MH-5": ["Mess", "Other"],
-        "MH-6": ["Mess", "Other"]
-    };
+    "Academic Block-1 (AB-1)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
 
-    // Alphabetically sort building names
-    const sortedBuildings = Object.keys(buildingsWithAreas).sort();
+    "Academic Block-2 (AB-2)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
 
-    // Displaying building names in alphabetical order
-    sortedBuildings.forEach(building => {
-        let areas = "";
-        if (buildingsWithAreas[building].areas) {
-            areas = `Specific Area: ${buildingsWithAreas[building].areas.join(", ")}`;
-        }
-        console.log(`${building}\n${areas}`);
-    });
+    "Central Block": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor"],
+
+    "Rock Plaza": ["Cafeteria", "Badminton Court", "Tennis Court", "Gym", "2nd Floor"],
+
+    "LH-1": ["Mess", "Other"],
+
+    "LH-2": ["Mess", "Other"],
+
+    "LH-3": ["Mess", "Other"],
+
+    "LH-4": ["Mess", "Other"],
+
+    "MH-2": ["Mess", "Other"],
+
+    "MH-3": ["Mess", "Other"],
+
+    "MH-4": ["Mess", "Other"],
+
+    "MH-5": ["Mess", "Other"],
+
+    "MH-6": ["Mess", "Other"]
+
+}
+
+// Alphabetically sort building names
+const sortedBuildings = Object.keys(buildingsWithAreas).sort();
+
+// Displaying building names in alphabetical order
+sortedBuildings.forEach(building => {
+    let areas = "";
+    if (buildingsWithAreas[building].areas) {
+        areas = `Specific Area: ${buildingsWithAreas[building].areas.join(", ")}`;
+    }
+    console.log(`${building}\n${areas}`);
+});
 
     // Function to populate specific areas dropdown based on selected building
     function populateSpecificAreas(building) {
@@ -115,43 +127,32 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('building', buildingSelect.value);
             formData.append('specificArea', specificAreaSelect.value);
             Array.from(imageUploadInput.files).forEach(file => {
-                formData.append('images', file);
-            });
-
-            // Show the loading overlay before making the fetch request
-            loadingOverlay.style.display = 'flex';
-
-            fetch('/create', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.status === 429) {
-                    // Redirect if rate limit exceeded
-                    window.location.href = '/rate-limit-exceeded';
-                } else if (!response.ok) {
-                    throw new Error('Error submitting form');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                showNotification("Form submitted successfully");
-
-                // Hide the loading overlay after successful submission
-                loadingOverlay.style.display = 'none';
-
-                setTimeout(() => {
-                    window.location.href = '/';
-                }, 100); // 2-second delay
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showNotification("Error submitting form");
-
-                // Hide the loading overlay in case of error
-                loadingOverlay.style.display = 'none';
-            });
+            formData.append('images', file);
+        });
+        fetch('/create', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.status === 429) {
+                // Redirect if rate limit exceeded
+                window.location.href = '/rate-limit-exceeded';
+            } else if (!response.ok) {
+                throw new Error('Error submitting form');
+            }
+            return response.json();
+        })
+        .then(data => {
+        console.log(data);
+        showNotification("Form submitted successfully");
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 100); // 2-second delay
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        showNotification("Error submitting form");
+        });
         }
     });
 
@@ -170,22 +171,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
-// function handleClick() {
-//     var button = document.getElementById('submit-button');
-//     var overlay = document.getElementById('loading-overlay');
-
-//     // Disable the button to prevent multiple submissions
-//     button.disabled = true;
-//     button.innerText = 'Submitting...';
-
-//     // Show the loading overlay
-//     overlay.style.display = 'flex'; 
-
-//     // Simulating form submission (replace with actual form submission code)
-//     setTimeout(function() {
-//         // After form submission, you can hide the overlay (if form is successfully submitted)
-//         // If the form submission fails, handle the error appropriately
-//         overlay.style.display = 'none';
-//     }, 10000); // Simulate form submission taking 10 seconds
-// }
+function handleClick() {
+    var button = document.getElementById('submit-button');
+    button.disabled = true;
+    button.innerText = 'Submitting...';
+    // setTimeout(function() {
+    //   button.disabled = false;
+    //   button.innerText = 'Submit';
+    // }, 10000); 
+  }
