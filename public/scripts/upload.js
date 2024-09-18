@@ -9,48 +9,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const imagePreview = document.getElementById('image-preview');
     const notification = document.getElementById('notification');
     const descriptionTextarea = document.getElementById('description');
+    const MAX_WIDTH = 520;
+    const MAX_HEIGHT = 560;
+    const MIME_TYPE = "image/jpeg";
+    const QUALITY = 0.9;
 
     // Buildings with specific areas
     const buildingsWithAreas = {
-    "Academic Block-1 (AB-1)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
-
-    "Academic Block-2 (AB-2)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
-
-    "Central Block": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor"],
-
-    "Rock Plaza": ["Cafeteria", "Badminton Court", "Tennis Court", "Gym", "2nd Floor"],
-
-    "LH-1": ["Mess", "Other"],
-
-    "LH-2": ["Mess", "Other"],
-
-    "LH-3": ["Mess", "Other"],
-
-    "LH-4": ["Mess", "Other"],
-
-    "MH-2": ["Mess", "Other"],
-
-    "MH-3": ["Mess", "Other"],
-
-    "MH-4": ["Mess", "Other"],
-
-    "MH-5": ["Mess", "Other"],
-
-    "MH-6": ["Mess", "Other"]
-
-}
-
-// Alphabetically sort building names
-const sortedBuildings = Object.keys(buildingsWithAreas).sort();
-
-// Displaying building names in alphabetical order
-sortedBuildings.forEach(building => {
-    let areas = "";
-    if (buildingsWithAreas[building].areas) {
-        areas = `Specific Area: ${buildingsWithAreas[building].areas.join(", ")}`;
-    }
-    console.log(`${building}\n${areas}`);
-});
+        "Academic Block-1 (AB-1)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
+        "Academic Block-2 (AB-2)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
+        "Central Block": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor"],
+        "Rock Plaza": ["Cafeteria", "Badminton Court", "Tennis Court", "Gym", "2nd Floor"],
+        "LH-1": ["Mess", "Other"],
+        "LH-2": ["Mess", "Other"],
+        "LH-3": ["Mess", "Other"],
+        "LH-4": ["Mess", "Other"],
+        "MH-2": ["Mess", "Other"],
+        "MH-3": ["Mess", "Other"],
+        "MH-4": ["Mess", "Other"],
+        "MH-5": ["Mess", "Other"],
+        "MH-6": ["Mess", "Other"]
+    };
 
     // Function to populate specific areas dropdown based on selected building
     function populateSpecificAreas(building) {
@@ -82,22 +61,92 @@ sortedBuildings.forEach(building => {
         }, 3000);
     }
 
+    // Function to compress image
+    function compressImage(file) {
+        return new Promise((resolve, reject) => {
+            const blobURL = URL.createObjectURL(file);
+            const img = new Image();
+            img.src = blobURL;
+
+            img.onerror = function () {
+                URL.revokeObjectURL(this.src);
+                reject("Cannot load image");
+            };
+
+            img.onload = function () {
+                URL.revokeObjectURL(this.src);
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+
+                const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
+                canvas.width = newWidth;
+                canvas.height = newHeight;
+                ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+                canvas.toBlob(
+                    (blob) => {
+                        resolve(new File([blob], file.name, { type: MIME_TYPE })); // Resolve with File object
+                    },
+                    MIME_TYPE,
+                    QUALITY
+                );
+            };
+        });
+    }
+
+    function calculateSize(img, maxWidth, maxHeight) {
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+            if (width > maxWidth) {
+                height = Math.round((height *= maxWidth / width));
+                width = maxWidth;
+            }
+        } else {
+            if (height > maxHeight) {
+                width = Math.round((width *= maxHeight / height));
+                height = maxHeight;
+            }
+        }
+        return [width, height];
+    }
+
     // Function to handle image upload
     function handleImageUpload(file) {
-        const reader = new FileReader();
         const fileInfo = document.createElement('div');
         fileInfo.innerText = `Uploading ${file.name}...`;
         imagePreview.appendChild(fileInfo);
 
-        reader.onload = function (e) {
-            fileInfo.innerHTML = `<a href="${e.target.result}" target="_blank">${file.name}</a>`;
-        };
+        compressImage(file).then(compressedFile => {
+            fileInfo.innerHTML = `<a href="${URL.createObjectURL(compressedFile)}" target="_blank">${file.name}</a>`;
+        }).catch(error => {
+            console.error(error);
+            fileInfo.innerText = `Failed to upload ${file.name}`;
+        });
+    }
 
-        reader.readAsDataURL(file);
+    function showLoadingOverlay() {
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        if (!loadingOverlay || !loadingSpinner) {
+            console.error("Loading overlay or spinner not found in the DOM.");
+            return; // Exit the function if elements are not found
+        }
+        loadingOverlay.style.display = 'flex';
+        loadingSpinner.textContent = 'Uploading...';
+
+        setTimeout(() => {
+            loadingSpinner.textContent = 'Hang tight, we’re still working on it...';
+        }, 20000); // 20 seconds
+
+        setTimeout(() => {
+            loadingSpinner.textContent = 'It\'s taking longer than usual, but don\'t worry, we\'ve got you covered.';
+        }, 90000); // 90 seconds
     }
 
     // Event listener for submit button
-    submitButton.addEventListener('click', function (e) {
+    submitButton.addEventListener('click', async function (e) {
         e.preventDefault();
         let missingDetails = [];
 
@@ -126,42 +175,46 @@ sortedBuildings.forEach(building => {
             formData.append('itemType', itemTypeSelect.value);
             formData.append('building', buildingSelect.value);
             formData.append('specificArea', specificAreaSelect.value);
-            Array.from(imageUploadInput.files).forEach(file => {
-            formData.append('images', file);
-        });
-        fetch('/create', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.status === 429) {
-                // Redirect if rate limit exceeded
-                window.location.href = '/rate-limit-exceeded';
-            } else if (!response.ok) {
-                throw new Error('Error submitting form');
+
+            const files = Array.from(imageUploadInput.files);
+            const compressionPromises = files.map(file => compressImage(file));
+
+            try {
+                showLoadingOverlay();
+                const compressedFiles = await Promise.all(compressionPromises);
+                compressedFiles.forEach(file => {
+                    formData.append('images', file);
+                });
+
+                const response = await fetch('/create', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.status === 429) {
+                    // Redirect if rate limit exceeded
+                    window.location.href = '/rate-limit-exceeded';
+                } else if (!response.ok) {
+                    throw new Error('Error submitting form');
+                }
+
+                const data = await response.json();
+                console.log(data);
+                showNotification("Form submitted successfully");
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 100); 
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification("Error submitting form");
             }
-            return response.json();
-        })
-        .then(data => {
-        console.log(data);
-        showNotification("Form submitted successfully");
-        setTimeout(() => {
-            window.location.href = '/';
-        }, 100); // 2-second delay
-        })
-        .catch(error => {
-        console.error('Error:', error);
-        showNotification("Error submitting form");
-        });
         }
     });
 
     // Event listener for image upload input
     imageUploadInput.addEventListener('change', function () {
         const files = Array.from(imageUploadInput.files);
-        files.forEach(file => {
-            handleImageUpload(file);
-        });
+        files.forEach(file => handleImageUpload(file));
     });
 
     // Auto-expand description textarea
@@ -169,53 +222,4 @@ sortedBuildings.forEach(building => {
         this.style.height = 'auto';
         this.style.height = `${this.scrollHeight}px`;
     });
-
-    function showLoadingOverlay() {
-        loadingOverlay.style.display = 'flex';
-        loadingSpinner.textContent = 'Uploading...';
-
-        setTimeout(() => {
-            loadingSpinner.textContent = 'Hang tight, we’re still working on it...';
-        }, 20000); // 20 seconds
-
-        setTimeout(() => {
-            loadingSpinner.textContent = 'It\'s taking longer than usual, but don\'t worry, we\'ve got you covered.';
-        }, 90000); // 90 seconds
-    }
-
-    submitButton.addEventListener('click', handleFormSubmission);
 });
-
-function handleClick() {
-    var button = document.getElementById('submit-button');
-    var overlay = document.getElementById('loading-overlay');
-
-    // Disable the button to prevent multiple submissions
-    button.disabled = true;
-    button.innerText = 'Submitting...';
-
-    // Show the loading overlay
-    overlay.style.display = 'flex'; 
-
-<<<<<<< Updated upstream
-    // Simulating form submission (replace with actual form submission code)
-    setTimeout(function() {
-        // After form submission, you can hide the overlay (if form is successfully submitted)
-        // If the form submission fails, handle the error appropriately
-        overlay.style.display = 'none';
-    }, 10000); // Simulate form submission taking 10 seconds
-}
-=======
-//     // Show the loading overlay
-//     overlay.style.display = 'flex'; 
-
-//     // Simulating form submission (replace with actual form submission code)
-//     setTimeout(function() {
-//         // After form submission, you can hide the overlay (if form is successfully submitted)
-//         // If the form submission fails, handle the error appropriately
-//         overlay.style.display = 'none';
-//     }, 10000); // Simulate form submission taking 10 seconds
-// }
-
-
->>>>>>> Stashed changes

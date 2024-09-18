@@ -20,7 +20,7 @@
         </a>
     </div>
     <div id="loading-overlay" style="display: none;">
-        <div class="loading-spinner"></div>
+        <div class="loading-spinner">Uploading</div>
     </div>
     <div class="container">
         <form id="upload-form" action="/create" method="post" enctype="multipart/form-data">
@@ -94,13 +94,12 @@
             </div>
         </div>
         <div class="submit-section">
-            <button type="submit" id="submit-button" onclick="handleClick()">Submit</button>
+            <button type="submit" id="submit-button">Submit</button>
         </div>
     </form>
     </div>
     <h4>You can only upload 1 image every 30 minutes</h4>
     <h4>Image upload time depends on internet connectivity. Please choose images of lower file size for smoother experience</h4>
-    <script src="https://cdn.jsdelivr.net/npm/compress.js/dist/compress.min.js"></script>
     <script src="scripts/upload.js"></script>
 </body>
 

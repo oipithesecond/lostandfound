@@ -18,7 +18,7 @@ const compressAndSaveImages = async (req, res, next) => {
 
         await sharp(file.buffer)
           .resize(800) 
-          .jpeg({ quality: 50 }) 
+          .jpeg({ quality: 80 }) 
           .toFile(outputFilename);
 
         file.path = outputFilename;
