@@ -169,14 +169,53 @@ sortedBuildings.forEach(building => {
         this.style.height = 'auto';
         this.style.height = `${this.scrollHeight}px`;
     });
+
+    function showLoadingOverlay() {
+        loadingOverlay.style.display = 'flex';
+        loadingSpinner.textContent = 'Uploading...';
+
+        setTimeout(() => {
+            loadingSpinner.textContent = 'Hang tight, we’re still working on it...';
+        }, 20000); // 20 seconds
+
+        setTimeout(() => {
+            loadingSpinner.textContent = 'It\'s taking longer than usual, but don\'t worry, we\'ve got you covered.';
+        }, 90000); // 90 seconds
+    }
+
+    submitButton.addEventListener('click', handleFormSubmission);
 });
 
 function handleClick() {
     var button = document.getElementById('submit-button');
+    var overlay = document.getElementById('loading-overlay');
+
+    // Disable the button to prevent multiple submissions
     button.disabled = true;
     button.innerText = 'Submitting...';
-    // setTimeout(function() {
-    //   button.disabled = false;
-    //   button.innerText = 'Submit';
-    // }, 10000); 
-  }
+
+    // Show the loading overlay
+    overlay.style.display = 'flex'; 
+
+<<<<<<< Updated upstream
+    // Simulating form submission (replace with actual form submission code)
+    setTimeout(function() {
+        // After form submission, you can hide the overlay (if form is successfully submitted)
+        // If the form submission fails, handle the error appropriately
+        overlay.style.display = 'none';
+    }, 10000); // Simulate form submission taking 10 seconds
+}
+=======
+//     // Show the loading overlay
+//     overlay.style.display = 'flex'; 
+
+//     // Simulating form submission (replace with actual form submission code)
+//     setTimeout(function() {
+//         // After form submission, you can hide the overlay (if form is successfully submitted)
+//         // If the form submission fails, handle the error appropriately
+//         overlay.style.display = 'none';
+//     }, 10000); // Simulate form submission taking 10 seconds
+// }
+
+
+>>>>>>> Stashed changes

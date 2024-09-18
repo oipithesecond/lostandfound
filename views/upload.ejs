@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/compress.js/dist/compress.min.js"></script>
 </head>
 
 <body>
@@ -19,6 +18,9 @@
         <a href="/">
             <img src="images/FoundIt! logo.png" alt="">
         </a>
+    </div>
+    <div id="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
     </div>
     <div class="container">
         <form id="upload-form" action="/create" method="post" enctype="multipart/form-data">
@@ -98,6 +100,7 @@
     </div>
     <h4>You can only upload 1 image every 30 minutes</h4>
     <h4>Image upload time depends on internet connectivity. Please choose images of lower file size for smoother experience</h4>
+    <script src="https://cdn.jsdelivr.net/npm/compress.js/dist/compress.min.js"></script>
     <script src="scripts/upload.js"></script>
 </body>
 
