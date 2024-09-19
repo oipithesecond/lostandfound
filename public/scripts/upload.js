@@ -148,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event listener for submit button
     submitButton.addEventListener('click', async function (e) {
         e.preventDefault();
+        submitButton.disabled = true;
         let missingDetails = [];
 
         if (!titleInput.value.trim()) {
@@ -168,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (missingDetails.length) {
             showNotification(`Please fill out the following fields: ${missingDetails.join(', ')}`);
+            submitButton.disabled = false;
         } else {
             const formData = new FormData();
             formData.append('title', titleInput.value);
@@ -207,6 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } catch (error) {
                 console.error('Error:', error);
                 showNotification("Error submitting form");
+                submitButton.disabled = false;
             }
         }
     });
