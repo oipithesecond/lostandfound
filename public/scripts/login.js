@@ -53,3 +53,25 @@
 //         alert("Password must be at least 5 characters long and cannot contain spaces.");
 //     }
 // });
+
+// JavaScript to hide the loading overlay when the image is fully loaded
+window.addEventListener('load', function () {
+    const loghinBackground = document.querySelector('.loghin');
+    const loadingOverlay = document.querySelector('.loading-overlay');
+
+    const img = new Image();
+    img.src = "https://picsum.photos/600/800?grayscale";
+
+    const timeoutId = setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+    }, 5000); // Hide after 5 seconds as a fallback
+
+    img.onload = function () {
+        loghinBackground.style.backgroundImage = `url(${img.src})`;
+        loadingOverlay.classList.add('hidden');
+    };
+    img.onerror = function () {
+        // If there's an error loading the image, hide the overlay anyway
+        loadingOverlay.classList.add('hidden');
+    };
+});
