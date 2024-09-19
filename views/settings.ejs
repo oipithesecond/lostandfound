@@ -113,13 +113,22 @@
             </div>
 
             <div class="content" id="appearance-content" style="display:none;">
-                <h2>Appearance Content</h2>
-                <p>This is Appearance Content D</p>
-                <p>This is Appearance Content E</p>
+                <div class="under-development">
+                    <h2>🚧 Under Construction 🚧</h2>
+                    <p>We're working hard behind the scenes to bring you a fresh new look! Stay tuned as we build something amazing just
+                        for you. In the meantime, feel free to explore the other sections.</p>
+                </div>
             </div>
 
             <div class="content" id="treatus-content" style="display:none;">
-                <p>coming soon...hope so</p>
+                <h1>Treat Us - Coming Soon!</h1>
+                
+                <div class="treat-progress-bar">
+                    <div class="treat-progress-bar-fill"></div>
+                </div>
+                
+                <p class="treat-coming-soon">Patience is a virtue... but the wait is almost over!</p>
+                <p class="treat-message">Thank you for your support and stay tuned for updates!</p>
             </div>
 
             <div class="content" id="reportbug-content">
@@ -147,9 +156,135 @@
 
 
             <div class="content" id="help-content" style="display:none;">
-                <h2>Help Content</h2>
-                <p>This is Help Content J</p>
-                <p>This is Help Content K</p>
+                <div id="faq-section">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            What is FoundIt!?
+                        </div>
+                        <div class="faq-answer">
+                            FoundIt! is your lost and found buddy on the VIT-AP campus. Whether you misplaced something or found someone
+                            else’s stuff, we're here to help reunite items with their rightful owners.
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            How do I upload an item?
+                        </div>
+                        <div class="faq-answer">
+                            The first step is done—you're logged in with your VIT-AP email! Now, click on the "Upload" button on the
+                            left side of
+                            the homepage (if you can't find the homepage, just click our logo to head back there). Fill out the required
+                            sections
+                            and hit "Submit." Pro tip: Add a detailed description and maybe some extra contact info to make the process
+                            smoother!
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Why is my post taking so long to upload?
+                        </div>
+                        <div class="faq-answer">
+                            No worries, it's just your internet working through those images. It can take up to 3 minutes to upload
+                            everything, so
+                            please don’t panic or spam the submit button—it’ll get there!
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Why can't I upload a second post?
+                        </div>
+                        <div class="faq-answer">
+                            There’s a 30-minute cooldown period after your first post. You can go ahead and upload again after that
+                            time. Grab a
+                            coffee while you wait!
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            How can I find my lost item?
+                        </div>
+                        <div class="faq-answer">
+                            Just scroll through our homepage and see if anything looks familiar! Once you spot your item, click on it
+                            and follow the verification process. You can also use our "Filter" button on the left side of the homepage
+                            to narrow down result by
+                            item type or location—or even both!
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            I can't find my lost item!
+                        </div>
+                        <div class="faq-answer">
+                            Bummer! We hope you find it soon. In the meantime, spread the word about FoundIt! to your friends and
+                            classmates—more
+                            users mean better chances of finding your lost stuff in the future.
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            How do I contact the poster?
+                        </div>
+                        <div class="faq-answer">
+                            We've made it super simple! Just click the "Contact Poster" button, and you’ll be redirected to Gmail, with
+                            the email
+                            address and subject already filled out. Try not to mess with the auto-filled info—just add anything extra
+                            you need to
+                            say at the bottom. Some posters may include their phone number in the description, so you can contact them
+                            directly!
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            I found the owner of the item—how do I delete my post?
+                        </div>
+                        <div class="faq-answer">
+                            Easy peasy! Head to the "Settings" button at the bottom left of the page, go to your profile, and find your
+                            post. Hit
+                            "Delete" and you're all set.
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Why did my post get auto-deleted?
+                        </div>
+                        <div class="faq-answer">
+                            Oops, did you forget to delete your post after returning the item? Don’t worry—we automatically delete posts
+                            after 10
+                            days to keep things tidy. If the item is still lost, feel free to post again!
+                        </div>
+                    </div>
+                
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            I’m facing an issue. Help!
+                        </div>
+                        <div class="faq-answer">
+                            We're here for you! Click the "Settings" button on the bottom left, then select "Report a Bug." Choose your
+                            issue, add a description, and hit "Submit." We promise to work on it for the next update.
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Why can't I change the appearance of the website?
+                        </div>
+                        <div class="faq-answer">
+                            We’re cooking up some cool appearance customization options right now. Hang tight—it’s coming soon, and we
+                            appreciate
+                            your patience!
+                        </div>
+                    </div>
+                
+                </div>
             </div>
         </div>
     </div>

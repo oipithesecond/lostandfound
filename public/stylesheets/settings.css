@@ -1,16 +1,19 @@
-* {
+* 
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Roboto Flex", sans-serif;
+body 
+{
+    font-family: "Roboto Flex";
     background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
     overflow-x: hidden;
 }
 
-.upar {
+.upar 
+{
     position: fixed;
     background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
     width: 100vw;
@@ -18,7 +21,8 @@ body {
     z-index: 1000;
 }
 
-.upar img {
+.upar img 
+{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -26,43 +30,54 @@ body {
     transition: transform 0.5s;
 }
 
-.upar img:hover {
+.upar img:hover 
+{
     animation: animateLogo 0.5s ease-in-out;
 }
 
-@keyframes animateLogo {
+@keyframes animateLogo 
+{
+
 
     0%,
-    100% {
+    100% 
+    {
         transform: rotate(0deg);
     }
 
-    15% {
+    15% 
+    {
         transform: rotate(-5deg);
     }
 
-    30% {
+    30% 
+    {
         transform: rotate(3deg);
     }
 
-    45% {
+    45% 
+    {
         transform: rotate(-3deg);
     }
 
-    60% {
+    60% 
+    {
         transform: rotate(2deg);
     }
 
-    75% {
+    75% 
+    {
         transform: rotate(-1deg);
     }
 }
 
-.container {
+.container 
+{
     display: flex;
 }
 
-.sidebar {
+.sidebar 
+{
     margin-top: 10vh;
     position: fixed;
     top: 0;
@@ -75,11 +90,13 @@ body {
     z-index: 1000;
 }
 
-.sidebar.active {
+.sidebar.active 
+{
     width: 250px;
 }
 
-.sidebar #btn {
+.sidebar #btn 
+{
     position: absolute;
     color: whitesmoke;
     top: .4rem;
@@ -89,15 +106,18 @@ body {
     cursor: pointer;
 }
 
-.sidebar.active #btn {
+.sidebar.active #btn 
+{
     left: 90%;
 }
 
-.sidebar ul {
+.sidebar ul 
+{
     margin-top: 3rem;
 }
 
-.sidebar ul li {
+.sidebar ul li 
+{
     position: relative;
     list-style-type: none;
     width: 80%;
@@ -105,7 +125,8 @@ body {
     line-height: 50px;
 }
 
-.sidebar ul li a {
+.sidebar ul li a 
+{
     color: whitesmoke;
     display: flex;
     align-items: center;
@@ -116,26 +137,31 @@ body {
     height: 60px;
 }
 
-.sidebar ul li a:hover {
+.sidebar ul li a:hover 
+{
     color: #7AA128;
 }
 
-.sidebar ul li a i {
+.sidebar ul li a i 
+{
     font-size: 22px;
     margin-right: 1rem;
 }
 
-.sidebar .nav-item {
+.sidebar .nav-item 
+{
     padding: 0;
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-.sidebar.active .nav-item {
+.sidebar.active .nav-item 
+{
     opacity: 1;
 }
 
-.sidebar ul li .tooltip {
+.sidebar ul li .tooltip 
+{
     position: absolute;
     left: 125px;
     top: 50%;
@@ -148,43 +174,52 @@ body {
     z-index: 20;
     opacity: 0;
     transition: opacity 0.5s ease;
+    width: 120px;
 }
 
-.sidebar ul li:hover .tooltip {
+.sidebar ul li:hover .tooltip 
+{
     opacity: 1;
 }
 
-.sidebar.active ul li .tooltip {
+.sidebar.active ul li .tooltip 
+{
     display: none;
 }
 
-.main-content {
+.main-content 
+{
     margin-left: 80px;
     width: calc(100% - 80px);
     padding: 2rem;
     transition: margin-left 0.5s ease, width 0.5s ease;
 }
 
-.sidebar.active~.main-content {
+.sidebar.active~.main-content 
+{
     margin-left: 250px;
     width: calc(100% - 250px);
 }
 
-.content {
+.content 
+{
     display: none;
 }
 
-.content.active {
+.content.active 
+{
     display: block;
 }
 
 
-#profile-content {
+#profile-content 
+{
     padding-top: 12vh;
     color: white;
 }
 
-#profile-content img {
+#profile-content img 
+{
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -192,7 +227,8 @@ body {
     border-width: 2px;
 }
 
-#hello {
+#hello 
+{
     padding-left: 10px;
     display: inline;
     font-size: 32px;
@@ -200,18 +236,21 @@ body {
     margin-bottom: 1rem;
 }
 
-#hello #username {
+#hello #username 
+{
     color: #7AA128;
 }
 
-.main {
+.main 
+{
     display: flex;
     flex-direction: column;
     gap: 1em;
     margin-top: 2.7rem;
 }
 
-.post {
+.post 
+{
     display: flex;
     align-items: center;
     background-color: rgb(38, 38, 38);
@@ -222,14 +261,16 @@ body {
     position: relative;
 }
 
-.post img {
+.post img 
+{
     max-width: 150px;
     max-height: 150px;
     border-radius: 8px;
     margin-right: 1rem;
 }
 
-.post-details {
+.post-details 
+{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -237,31 +278,36 @@ body {
 }
 
 
-.post-details h3 {
+.post-details h3 
+{
     margin: 0;
     font-size: 1.5rem;
     color: whitesmoke;
     text-decoration: none;
 }
 
-.post-details .para {
+.post-details .para 
+{
     margin: 0.5rem 0;
     color: #666;
 }
 
-.post:hover {
+.post:hover 
+{
     box-shadow: 0 2px 10px whitesmoke;
     transform: scale(1.005);
     transition: transform 0.3s ease-in-out;
 }
 
-.date {
+.date 
+{
     font-size: 0.9rem;
     color: #999;
     margin-bottom: 0.5rem;
 }
 
-.delete-btn {
+.delete-btn 
+{
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -273,47 +319,52 @@ body {
     cursor: pointer;
 }
 
-.delete-btn:hover {
+.delete-btn:hover 
+{
     background-color: #e60000;
 }
 
-.yourposts {
+.yourposts 
+{
     color: #999;
     font-size: 14px;
 }
 
-a {
+a 
+{
     text-decoration: none;
     color: #7AA128;
 }
 
 
-#treatus-content {
+#treatus-content 
+{
     padding-top: 12vh;
     color: whitesmoke;
 }
 
-/* Add to your existing CSS file */
-
-/* Report Bug Section Styling */
-#reportbug-content {
+#reportbug-content
+{
     display: flex;
     padding-top: 12vh;
 }
 
-.report-bug-container {
+.report-bug-container 
+{
     color: #999;
     width: 100%;
     max-width: 600px;
 }
 
-.report-bug-container h1 {
+.report-bug-container h1 
+{
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     color: #7AA128;
 }
 
-.report-bug-container label {
+.report-bug-container label 
+{
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
@@ -321,7 +372,8 @@ a {
 
 .report-bug-container select,
 .report-bug-container textarea,
-.report-bug-container input {
+.report-bug-container input 
+{
     background-color: rgb(38, 38, 38);
     color: whitesmoke;
     width: 100%;
@@ -334,7 +386,8 @@ a {
 
 
 
-.report-bug-container button {
+.report-bug-container button 
+{
     background-color: #007bff;
     color: whitesmoke;
     border: none;
@@ -345,65 +398,239 @@ a {
     transition: background-color 0.3s;
 }
 
-.report-bug-container button:hover {
+.report-bug-container button:hover 
+{
     background-color: #0056b3;
 }
 
-textarea {
+textarea 
+{
     overflow: hidden;
     resize: none;
 }
 
 .report-bug-container select:hover,
-.report-bug-container textarea:hover {
+.report-bug-container textarea:hover 
+{
     box-shadow: 0 2px 10px whitesmoke;
     transform: scale(1.005);
     transition: transform 0.3s ease-in-out;
 }
 
-#logout-btn {
-    margin-top: 26vh;
+#logout-btn 
+{
+    margin-top: 24vh;
 }
 
-#logout-btn:hover {
+#logout-btn:hover 
+{
     color: red;
 }
 
-@media (max-width: 768px) {
-    .sidebar ul li .tooltip {
+@media (max-width: 768px) 
+{
+    .sidebar ul li .tooltip 
+    {
         display: none;
     }
 
-    .upar {
+    .upar 
+    {
         height: 7vh;
     }
 
-    .upar img {
+    .upar img 
+    {
         height: 7vh;
     }
 
-    .sidebar {
+    .sidebar 
+    {
         margin-top: 7vh;
         height: 93vh;
     }
 
-    .sidebar.active~.main-content {
+    .sidebar.active~.main-content 
+    {
         margin-left: 250px;
         width: calc(100% - 250px);
     }
 
-    a {
+    a 
+    {
         width: 20vw;
     }
 
     #profile-content,
     #treatus-content,
     #reportbug-content,
-    #help-content {
+    #help-content 
+    {
         padding-top: 8vh;
     }
 
-    #logout-btn {
+    #logout-btn 
+    {
         margin-top: 30vh;
     }
+}
+
+
+#faq-section 
+{
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 10vh;
+}
+
+.faq-item 
+{
+    margin-bottom: 10px;
+    border: 1px solid purple;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.faq-item:hover 
+{
+    box-shadow: 0 2px 10px whitesmoke;
+    transform: scale(1.005);
+    transition: transform 0.3s ease-in-out;
+}
+
+.faq-question 
+{
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgb(38, 38, 38);
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+.faq-question:hover 
+{
+    color: #7AA128;
+}
+
+
+.faq-answer 
+{
+    border-radius: 5px;
+    display: none;
+    padding: 10px;
+    background-color: #C0C0C0;
+    border-top: 1px solid #ccc;
+    animation: expand 0.3s ease-in-out;
+}
+
+@keyframes expand 
+{
+    from 
+    {
+        opacity: 0;
+        height: 0;
+    }
+
+    to 
+    {
+        opacity: 1;
+        height: auto;
+    }
+}
+
+
+.under-development 
+{
+    margin-top: 10vh;
+    text-align: center;
+    color: #7AA128;
+    font-size: 1.2rem;
+    padding: 2rem;
+    background-color: rgb(38, 38, 38);
+    border-radius: 10px;
+    border: 2px dashed #7AA128;
+}
+
+.under-development h2 
+{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.under-development p 
+{
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+
+#treatus-content 
+
+{
+    margin-top: 10vh;
+    text-align: center;
+    color: #7AA128;
+    font-size: 1.2rem;
+    padding: 2rem;
+    background-color: rgb(38, 38, 38);
+    border-radius: 10px;
+    border: 2px dashed #7AA128;
+}
+
+.treat-us-container h1 
+{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 5px;
+    color: #7AA128;
+}
+
+.treat-us-container p
+{
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.treat-progress-bar 
+{
+    width: 100%;
+    background-color: #444;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    height: 25px;
+    overflow: hidden;
+}
+
+.treat-progress-bar-fill 
+{
+    width: 70%;
+    height: 100%;
+    background-color: #7AA128;
+    border-radius: 20px;
+    animation: treatFillProgress 3s ease-in-out;
+}
+
+@keyframes treatFillProgress 
+{
+    0% 
+    {
+        width: 0;
+    }
+
+    100% 
+    {
+        width: 70%;
+    }
+}
+
+.treat-coming-soon,
+.treat-message 
+{
+    font-size: 1rem;
+    padding: 5px;
+    color: #ddd;
 }
