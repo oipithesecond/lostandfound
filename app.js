@@ -15,7 +15,7 @@ const userModel = require("./models/user")
 const { upload, compressAndSaveImages } = require("./utils/multerconfig");
 require('./utils/passport')(passport)
 const {generateToken} = require("./utils/generatetoken")
-const { ensureAuth, ensureGuest } = require('./middleware/newauth')
+const { ensureAuth, ensureGuest } = require('./middleware/newAuth')
 const postLimiter = require('./middleware/PostrateLimiter')
 const bugLimiter = require('./middleware/BugrateLimiter')
 // const Auth = require('./middleware/oldAuth')
