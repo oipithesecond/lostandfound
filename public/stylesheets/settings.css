@@ -454,6 +454,12 @@ textarea
     {
         margin-left: 250px;
         width: calc(100% - 250px);
+        overflow-x: hidden;
+    }
+
+    .sidebar ul li a 
+    {
+        width: 100%;
     }
 
     a 
