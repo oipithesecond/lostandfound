@@ -18,6 +18,7 @@ body
     height: 10vh;
     font-size: 4rem;
     border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
 }
 
 .upar img 
@@ -79,6 +80,7 @@ body
     padding: 20px;
     background: rgb(38, 38, 38);
     border-radius: 10px;
+    margin-top: 10px;
 }
 
 .container:hover
