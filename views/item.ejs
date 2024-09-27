@@ -82,7 +82,10 @@
                     <div class="section additional-details">
                         <button id="sendEmailButton" 
                             data-user-email="<%= item.user.email %>" 
-                            data-email-body="This E-mail is related to this post on Foundit: <%= req.protocol %>://<%= req.get('host') %>/items/<%= item._id %>">
+                            data-email-body="<%= req.protocol %>://<%= req.get('host') %>/items/<%= item._id %> \n\n<strong><i>Note:</i></strong> The above link directs you to the item you are referring to. Please avoid editing or
+                            deleting the post.">
+
+                            
                             Contact Poster
                         </button>
                     </div>
