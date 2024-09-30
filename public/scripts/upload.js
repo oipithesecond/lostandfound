@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Buildings with specific areas
     const buildingsWithAreas = {
         "Academic Block-1 (AB-1)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
-        "Academic Block-2 (AB-2)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
-        "Central Block": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor"],
+        "Academic Block-2 (AB-2)": ["Auditorium","Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
+        "Central Block": ["Bench","Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor"],
         "Rock Plaza": ["Cafeteria", "Badminton Court", "Tennis Court", "Gym", "2nd Floor"],
         "LH-1": ["Mess", "Other"],
         "LH-2": ["Mess", "Other"],
