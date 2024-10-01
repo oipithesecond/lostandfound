@@ -43,7 +43,8 @@ app.get("/", ensureAuth, async (req, res) => {
     res.render("home", { items });
   } catch (error) {
     console.error("Error fetching items:", error);
-    res.status(500).send("Error loading the homepage.");
+    // res.status(500).send("Error loading the homepage.")
+    res.render("rateLimitExceeded")
   }
 })
 app.get("/login", ensureGuest, function (req, res) {
@@ -58,7 +59,8 @@ app.get("/profile/", ensureAuth, async (req,res)=>{
     res.render("settings", { user });
   } catch (error) {
     console.error("Error fetching user profile:", error);
-    res.status(500).send("Error loading the profile page.");
+    // res.status(500).send("Error loading the profile page.");
+    res.render("rateLimitExceeded")
   }
 })
 app.get("/items/:id", ensureAuth, async (req,res)=>{
@@ -82,7 +84,8 @@ app.post('/create', ensureAuth, postLimiter, upload.array('images', 10), compres
 
     } catch (error) {
         console.error(error)
-        res.status(500).send('Error saving data to the database.');
+        // res.status(500).send('Error saving data to the database.');
+        res.render("rateLimitExceeded")
     }
 })
 app.get("/delete/:id", ensureAuth, async (req, res) => {
@@ -97,6 +100,7 @@ app.get("/delete/:id", ensureAuth, async (req, res) => {
       fs.unlink(filePath, (err) => {
         if (err) {
           console.error('Error deleting file:', err);
+          res.render("rateLimitExceeded")
         }
       });
     });
@@ -105,7 +109,8 @@ app.get("/delete/:id", ensureAuth, async (req, res) => {
     res.redirect("/profile");
   } catch (error) {
     console.error("Error deleting item:", error);
-    res.status(500).send("Error deleting the item.");
+    // res.status(500).send("Error deleting the item.");
+    res.render("rateLimitExceeded")
   }
 })
 app.post('/submit-bug-report', ensureAuth, bugLimiter, (req, res) => {
@@ -119,7 +124,8 @@ app.post('/submit-bug-report', ensureAuth, bugLimiter, (req, res) => {
 
   fs.appendFile(filePath, report, (err) => {
     if (err) {
-      res.status(500).send('An error occurred while submitting the bug report.')
+      // res.status(500).send('An error occurred while submitting the bug report.')
+      res.render("rateLimitExceeded")
     } else {
       res.redirect('/');
     }
