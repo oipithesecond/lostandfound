@@ -53,8 +53,8 @@ app.get("/login", ensureGuest, function (req, res) {
 app.get("/upload", ensureAuth, function(req,res){
   res.render("upload")
 })
-app.get("/upload", ensureAuth, function(req, res) {
-  res.render("upload")
+app.get("/uploadlost", ensureAuth, function(req, res) {
+  res.render("rateLimitExceeded")
 })
 
 app.get("/profile/", ensureAuth, async (req,res)=>{
