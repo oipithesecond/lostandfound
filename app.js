@@ -74,7 +74,7 @@ app.get("/items/:id", ensureAuth, async (req,res)=>{
 app.post('/create', ensureAuth, postLimiter, upload.array('images', 10), compressAndSaveImages, async (req, res) => {
   try {
   let user = await userModel.findOne({email: req.user.email})
-    let { title, description, itemType, building, specificArea } = req.body
+    let { haal, title, description, itemType, building, specificArea } = req.body
     const images = req.files.map(file => ({
       filename: file.filename,
       path: file.path,
