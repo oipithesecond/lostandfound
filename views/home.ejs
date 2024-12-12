@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoundIt!</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="stylesheets/home.css">
+    <link rel="stylesheet" href="../public/stylesheets/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
         rel="stylesheet">
     <link rel="stylesheet"
@@ -25,11 +25,19 @@
         </div>
         <ul>
             <li>
-                <a href="/upload">
+                <!-- <a href="/upload">
                     <i class="bx bx-upload"></i>
                     <span class="nav-item">Upload</span>
                 </a>
+                <span class="tooltip">Upload</span> -->
+                <button id="uploadButton">
+                    <i class="bx bx-upload"></i>
+                    <span class="nav-item">Upload</span>
+                </button>
                 <span class="tooltip">Upload</span>
+                <div id="uploadOptions" style="display: none;">
+                    <button id="uploadLost">Upload Lost</button>
+                    <button id="uploadFound">Upload Found</button>
             </li>
             <li>
                 <button id="filterButton">
@@ -125,5 +133,5 @@
 </body>
 
 
-<script src="scripts/home.js"></script>
+<script src="../public/scripts/home.js"></script>
 </html>

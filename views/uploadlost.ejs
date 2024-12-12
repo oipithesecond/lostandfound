@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Lost Item</title>
+    <link rel="stylesheet" href="../public/stylesheets/upload.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="images/billa.png" type="image/png">
+</head>
+
+<body>
+    <div class="notification" id="notification"></div>
+    <div class="upar">
+        <a href="/">
+            <img src="images/FoundIt! logo.png" alt="">
+        </a>
+    </div>
+    <div id="loading-overlay" style="display: none;">
+        <div class="loading-spinner" id="loading-spinner">Uploading</div>
+    </div>
+    <div class="container">
+        <form id="upload-form" action="/create" method="post" enctype="multipart/form-data">
+            <div class="title-section">
+                <h2>Title</h2>
+                <input type="text" id="title" name="title" placeholder="Title" required>
+            </div>
+            <div class="description-section">
+                <h2>Description</h2>
+                <textarea id="description" name="description"
+                    placeholder="Provide item or contact details (optional)"></textarea>
+            </div>
+            <div class="upload-section">
+                <label for="image-upload" class="upload-button">Upload Image</label>
+                <input type="file" id="image-upload" accept="image/*" multiple>
+                <div id="image-preview"></div>
+            </div>
+            <div class="dropdown-section">
+                <div class="dropdown">
+                    <h2>Type of Item</h2>
+                    <select id="item-type">
+                        <option value="">Select an item type</option>
+                        <option value="Bags & Wallet">Bags & Purse</option>
+                        <option value="Notebook">Book</option>
+                        <option value="Calculator">Calculator</option>
+                        <option value="Charger">Charger</option>
+                        <option value="Headphones & Earbuds">Headphones & Earbuds</option>
+                        <option value="ID Card">ID Card</option>
+                        <option value="Jewellery">Jewellery</option>
+                        <option value="Keys">Keys</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Laundry Bags & Garments">Laundry Bags & Garments</option>
+                        <option value="Mobile phone">Mobile phone</option>
+                        <option value="Spectacles & Sunglasses">Spectacles & Sunglasses</option>
+                        <option value="Wallet">Wallet</option>
+                        <option value="Water bottle">Water bottle</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <h2>Lost in Area</h2>
+                    <select id="building">
+                        <option value="">Select an Area</option>
+                        <option value="Academic Block-1 (AB-1)">Academic Block-1 (AB-1)</option>
+                        <option value="Academic Block-1 Playground">Academic Block-1 Playground</option>
+                        <option value="Academic Block-2 (AB-2)">Academic Block-2 (AB-2)</option>
+                        <option value="Central Block">Central Block</option>
+                        <option value="Food Street">Food Street</option>
+                        <option value="Library">Library</option>
+                        <option value="LH-1">LH-1</option>
+                        <option value="LH-2">LH-2</option>
+                        <option value="LH-3">LH-3</option>
+                        <option value="LH-4">LH-4</option>
+                        <option value="Maggi Hotspot">Maggi Hotspot</option>
+                        <!-- <option value="MH-1">MH-1</option> -->
+                        <option value="MH-2">MH-2</option>
+                        <option value="MH-3">MH-3</option>
+                        <option value="MH-4">MH-4</option>
+                        <option value="MH-5">MH-5</option>
+                        <option value="MH-6">MH-6</option>
+                        <option value="Rock Plaza">Rock Plaza</option>
+                        <option value="Road">Road</option>
+                        <option value="Sports Triangle">Sports Triangle</option>
+                        <option value="University Bus">University Bus</option>
+                    </select>
+                </div>
+                <!-- <div class="dropdown" id="specific-area-section" style="display: none;">
+                    <h2>Specific Area</h2>
+                    <select id="specific-area">
+                        <option value="">Select a specific area</option>
+                    </select>
+                </div> -->
+            </div>
+            <div class="submit-section">
+                <button type="submit" id="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="../public/scripts/uploadlost.js"></script>
+</body>
+
+</html>

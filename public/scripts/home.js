@@ -89,6 +89,13 @@ function closeSidebarOnClickOutside(event) {
     }
 }
 
+document.getElementById('uploadButton').addEventListener('click', function() {
+    const uploadOptions = document.getElementById('uploadOptions');
+    // Toggle visibility of the upload options
+    uploadOptions.style.display = uploadOptions.style.display === 'none' ? 'block' : 'none';
+});
+
+
 document.addEventListener('click', closeSidebarOnClickOutside);
 
 
