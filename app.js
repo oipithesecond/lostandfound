@@ -53,6 +53,9 @@ app.get("/login", ensureGuest, function (req, res) {
 app.get("/upload", ensureAuth, function(req,res){
   res.render("upload")
 })
+app.get("/uploadlost", ensureAuth, function(req,res){
+  res.render("uploadlost")
+})
 app.get("/profile/", ensureAuth, async (req,res)=>{
   try {
     let user = await userModel.findOne({ email: req.user.email }).populate("posts");
