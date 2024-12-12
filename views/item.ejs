@@ -67,7 +67,13 @@
                     </div>
                     <div class="section location">
                         <h2>FoundIt!</h2>
-                        <p id="item-location">Found at: <span id="location"><%= item.building %> </span> <span id="area"><%= item.specificArea %></span></p>
+                        <p id="item-location">
+                            <% if (item.haal === 'lost') { %>
+                                Lost at: 
+                            <% } else if (item.haal === 'found') { %>
+                                Found at: 
+                            <% } %>
+                            <span id="location"><%= item.building %> </span> <span id="area"><%= item.specificArea %></span></p>
                     </div>
                 </div>
 

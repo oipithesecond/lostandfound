@@ -16,6 +16,11 @@ const itemSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
+  haal: {
+    type: String,
+    enum: ['lost', 'found'],
+    required: true,
+  }
 })
 
 const item = mongoose.model('item', itemSchema)
