@@ -80,7 +80,7 @@ app.post('/create', ensureAuth, postLimiter, upload.array('images', 10), compres
       path: file.path,
       originalname: file.originalname,
     }))
-        let createdItem = await itemModel.create({ title, description, itemType, building, specificArea, images, user: user._id });
+        let createdItem = await itemModel.create({ haal, title, description, itemType, building, specificArea, images, user: user._id });
         user.posts.push(createdItem._id)
         await user.save()
         res.json(createdItem)
