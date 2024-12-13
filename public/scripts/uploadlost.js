@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const imagePreview = document.getElementById('image-preview');
     const notification = document.getElementById('notification');
     const descriptionTextarea = document.getElementById('description');
+    const haal = document.querySelector('input[name="haal"]').value;
     const MAX_WIDTH = 520;
     const MAX_HEIGHT = 560;
     const MIME_TYPE = "image/jpeg";
@@ -138,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('itemType', itemTypeSelect.value);
             formData.append('building', buildingSelect.value);
             formData.append('specificArea', specificAreaSelect.value);
+            formData.append('haal', haal);
 
             const files = Array.from(imageUploadInput.files);
             const compressionPromises = files.map(file => compressImage(file));
