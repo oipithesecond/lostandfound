@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         specificAreaSection.style.display = 'none'; // Hide Specific Area for lost item
         specificAreaSelect.value = ""; // Reset specific area select
     }
-    
+
     function showNotification(message) {
         notification.innerText = message;
         notification.style.display = 'block';
@@ -126,6 +126,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (!buildingSelect.value) {
             missingDetails.push('Building');
+        }
+        if (specificAreaSection.style.display !== 'none' && !specificAreaSelect.value) {
+            missingDetails.push('Specific Area');
         }
         if (!imageUploadInput.files.length) {
             missingDetails.push('Image');

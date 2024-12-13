@@ -13,6 +13,7 @@ const itemModel = require("./models/item")
 const userModel = require("./models/user")
 // const multerConfig = require("./utils/multerconfig")
 const { upload, compressAndSaveImages } = require("./utils/multerconfig");
+
 require('./utils/passport')(passport)
 const {generateToken} = require("./utils/generatetoken")
 const { ensureAuth, ensureGuest } = require('./middleware/newAuth')
