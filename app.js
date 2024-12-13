@@ -140,7 +140,7 @@ app.get('/rate-limit-exceeded', ensureAuth, (req,res) => {
 })
 
 
-const PORT =  process.env.PORT || 8080
+const PORT =  process.env.PORT || 80
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log('Server started on defined port');
