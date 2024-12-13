@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const MIME_TYPE = "image/jpeg";
     const QUALITY = 0.9;
 
-    if (haal === "lost") {
-        specificAreaSection.style.display = 'none'; // Hide Specific Area for lost item
-        specificAreaSelect.value = ""; // Reset specific area select
-    }
+    // if (haal === "lost") {
+    //     specificAreaSection.style.display = 'none'; // Hide Specific Area for lost item
+    //     specificAreaSelect.value = ""; // Reset specific area select
+    // }
 
     // Buildings with specific areas
     const buildingsWithAreas = {
