@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const MIME_TYPE = "image/jpeg";
     const QUALITY = 0.9;
 
+    if (haal === "lost") {
+        specificAreaSection.style.display = 'none'; // Hide Specific Area for lost item
+        specificAreaSelect.value = ""; // Reset specific area select
+    }
+
     // Buildings with specific areas
     const buildingsWithAreas = {
         "Academic Block-1 (AB-1)": ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor"],
