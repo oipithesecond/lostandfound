@@ -94,19 +94,32 @@ function adjustFilterPosition() {
 function applyFilters() {
     const selectedItemType = document.getElementById('filter-item-type').value.toLowerCase();
     const selectedBuilding = document.getElementById('filter-building').value.toLowerCase();
+    const selectedStatus = document.getElementById('filter-status').value.toLowerCase();
     const items = document.querySelectorAll('.item');
 
     items.forEach(item => {
         const itemType = item.querySelector('.type').textContent.toLowerCase();
         const itemLocation = item.querySelector('.location').textContent.toLowerCase();
-
+        const itemStatusText = item.querySelector('.para').textContent.toLowerCase();
+        
+        const isLost = itemStatusText.includes("lost at");
+        
+        // Apply item type filter
         const typeMatch = selectedItemType === '' || itemType.includes(selectedItemType);
+        
+        // Apply location filter
         const locationMatch = selectedBuilding === '' || itemLocation.includes(selectedBuilding);
+        
+        // Apply status filter (lost or found)
+        const statusMatch = selectedStatus === '' || 
+                            (selectedStatus === 'lost' && isLost) || 
+                            (selectedStatus === 'found' && !isLost);
 
-        item.style.display = typeMatch && locationMatch ? 'block' : 'none';
+        // Show the item if it matches all selected filters
+        item.style.display = typeMatch && locationMatch && statusMatch ? 'block' : 'none';
     });
 
-    collapseSidebarAndOptions();
+    collapseSidebarAndOptions(); // Collapse the sidebar and filter options after applying the filter
 }
 
 // Toggle sidebar visibility
@@ -202,7 +215,7 @@ uploadButton.addEventListener("click", function () {
     } else {
         uploadOptions.style.width = '230px';
         uploadOptions.style.marginLeft = '14px'
-        // Default when sidebar is expanded
+        uploadOptions.style.marginBottom = '10px'// Default when sidebar is expanded
     }
 });
 
