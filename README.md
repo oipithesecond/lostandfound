@@ -8,7 +8,7 @@ A dynamic web application built with the **MEEN** stack:
 
 ---
 
-## 🌟 **Features**
+## **Features**
 
 - **User Authentication**: Secure institution-restricted sign-ins using Google OAuth 2.0.  
 - **Image Management**: Upload, compress, and store images efficiently.  
@@ -17,7 +17,7 @@ A dynamic web application built with the **MEEN** stack:
 
 ---
 
-## 🔧 **Node Dependencies**
+## **Node Dependencies**
 
 ### **Backend Tools**  
 | Dependency         | Purpose                                                                                          |
