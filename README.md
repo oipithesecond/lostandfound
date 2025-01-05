@@ -1,6 +1,6 @@
 # **FoundIt!**
 
-A dynamic web application built with the **MEEN** stack:  
+A dynamic web application built with the **"MEEN"** stack:  
 - **Node.js** for server-side programming  
 - **EJS** for server-side rendering  
 - **MongoDB** for database management  
