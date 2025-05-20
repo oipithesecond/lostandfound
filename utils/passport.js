@@ -6,7 +6,7 @@ module.exports = function (passport) {
   passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'http://ec2-3-111-61-172.ap-south-1.compute.amazonaws.com/auth/google/callback',
+        callbackURL: 'https://lostandfound-fq22.onrender.com/auth/google/callback',
         userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // Explicitly use the v3 userinfo endpoint
         scope: ['profile', 'email'] // Ensure correct scopes are requested
       },    
