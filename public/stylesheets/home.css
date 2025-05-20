@@ -1,12 +1,10 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body 
-{
+body {
     margin: 0;
     padding: 0;
     border: 0;
@@ -15,8 +13,7 @@ body
     background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
 }
 
-.upar 
-{
+.upar {
     position: fixed;
     background: radial-gradient(circle, rgba(67, 9, 67, 1) 0%, rgba(38, 38, 38, 1) 96%);
     width: 100vw;
@@ -25,8 +22,7 @@ body
     z-index: 1000;
 }
 
-.upar img 
-{
+.upar img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -35,48 +31,39 @@ body
     transition: transform 0.5s;
 }
 
-.upar img:hover 
-{
+.upar img:hover {
     animation: animateLogo 0.5s ease-in-out;
 }
 
-@keyframes animateLogo 
-{
+@keyframes animateLogo {
 
     0%,
-    100% 
-    {
+    100% {
         transform: rotate(0deg);
     }
 
-    15% 
-    {
+    15% {
         transform: rotate(-5deg);
     }
 
-    30% 
-    {
+    30% {
         transform: rotate(3deg);
     }
 
-    45% 
-    {
+    45% {
         transform: rotate(-3deg);
     }
 
-    60% 
-    {
+    60% {
         transform: rotate(2deg);
     }
 
-    75% 
-    {
+    75% {
         transform: rotate(-1deg);
     }
 }
 
-.sidebar
-{
+.sidebar {
     margin-top: 10vh;
     position: fixed;
     top: 0;
@@ -89,19 +76,16 @@ body
     z-index: 1000;
 }
 
-.sidebar.active ~ .main-content
-{
+.sidebar.active~.main-content {
     left: 250px;
     width: calc(100% - 250px);
 }
 
-.sidebar.active
-{
+.sidebar.active {
     width: 250px;
 }
 
-.sidebar #btn
-{
+.sidebar #btn {
     position: absolute;
     color: whitesmoke;
     top: .4rem;
@@ -112,29 +96,24 @@ body
     cursor: pointer;
 }
 
-.sidebar #btn:hover
-{
+.sidebar #btn:hover {
     color: #7AA128;
 }
 
-.sidebar.active #btn
-{
+.sidebar.active #btn {
     left: 90%;
 }
 
 
-.sidebar p
-{
+.sidebar p {
     opacity: 0;
 }
 
-.sidebar.active p
-{
+.sidebar.active p {
     opacity: 1;
 }
 
-.sidebar ul li
-{
+.sidebar ul li {
     position: relative;
     list-style-type: none;
     height: 50px;
@@ -143,8 +122,7 @@ body
     line-height: 50px;
 }
 
-.sidebar ul li a
-{
+.sidebar ul li a {
     color: whitesmoke;
     display: flex;
     align-items: center;
@@ -152,13 +130,11 @@ body
     border-radius: 0.8rem;
 }
 
-.sidebar ul li a:hover
-{
+.sidebar ul li a:hover {
     color: #7AA128;
 }
 
-.sidebar ul li a i
-{
+.sidebar ul li a i {
     min-width: 50px;
     text-align: center;
     height: 50px;
@@ -166,18 +142,15 @@ body
     line-height: 50px;
 }
 
-.sidebar .nav-item
-{
+.sidebar .nav-item {
     opacity: 0;
 }
 
-.sidebar.active .nav-item
-{
+.sidebar.active .nav-item {
     opacity: 1;
 }
 
-.sidebar ul li .tooltip
-{
+.sidebar ul li .tooltip {
     position: absolute;
     left: 125px;
     top: 50%;
@@ -190,38 +163,33 @@ body
     opacity: 0;
 }
 
-.sidebar ul li:hover .tooltip
-{
+.sidebar ul li:hover .tooltip {
     opacity: 1;
 }
 
-.sidebar.active ul li .tooltip
-{
+.sidebar.active ul li .tooltip {
     display: none;
 }
 
-ul li.settings 
-{
-    
-    position: relative;
+ul li.settings {
+
+    position: fixed;
     margin-top: 55vh;
-    
+    margin-right: 20px;
+
 }
 
-i 
-{
+i {
     font-size: 22px;
 }
 
-.container 
-{
+.container {
     display: flex;
     flex-direction: row;
     transition: width 0.5s ease;
 }
 
-.main
-{
+.main {
 
     margin-left: 80px;
     width: calc(100% - 80px);
@@ -232,14 +200,12 @@ i
     transition: width 0.5s ease;
 }
 
-.sidebar.active~.main 
-{
+.sidebar.active~.main {
     margin-left: 250px;
     width: calc(100% - 250px);
 }
 
-.item 
-{
+.item {
     overflow: hidden;
     padding-top: 10px;
     min-width: 280px;
@@ -257,29 +223,25 @@ i
 }
 
 
-.item img 
-{
+.item img {
     align-self: center;
     border-radius: 10px;
     width: 260px;
     height: 280px;
 }
 
-.item:hover 
-{
+.item:hover {
     box-shadow: 0 2px 10px whitesmoke;
     transform: scale(1.005);
     transition: transform 0.3s ease-in-out;
 }
 
-h3 
-{
+h3 {
     margin: 0;
     margin-top: 2%;
 }
 
-p 
-{
+p {
     margin: 0;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -287,8 +249,7 @@ p
 }
 
 .type,
-.location 
-{
+.location {
     border: 1px solid blueviolet;
     border-width: 2px;
     border-radius: 10px;
@@ -299,8 +260,7 @@ p
 
 }
 
-.details 
-{
+.details {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -309,13 +269,11 @@ p
     margin-bottom: 15px;
 }
 
-ul
-{
+ul {
     margin-top: 53px;
 }
 
-#filter-options 
-{
+#filter-options {
     position: fixed;
     background-color: transparent;
     border-radius: 10px;
@@ -325,8 +283,7 @@ ul
     z-index: 1000;
 }
 
-#filter-options select 
-{
+#filter-options select {
     width: 75%;
     padding: 10px;
     margin-bottom: 10px;
@@ -338,8 +295,7 @@ ul
     cursor: pointer;
 }
 
-#filter-options button 
-{
+#filter-options button {
     width: 75%;
     padding: 10px;
     border-radius: 10px;
@@ -347,95 +303,79 @@ ul
     cursor: pointer;
 }
 
-#filter-options button:hover 
-{
+#filter-options button:hover {
     background-color: #7AA128;
 }
 
-@media (max-width: 570px) 
-{
-    .item:hover 
-    {
+@media (max-width: 570px) {
+    .item:hover {
         display: block;
     }
 
-    .sidebar ul li:hover .tooltip 
-    {
+    .sidebar ul li:hover .tooltip {
         display: none;
     }
 
-    #filter-options 
-    {
+    #filter-options {
         margin-top: 205px;
     }
 
-    .item 
-    {
+    .item {
         margin-bottom: 30px;
     }
 
-    .upar 
-    {
-        height: 7vh;
-    }
-        
-    .upar img 
-    {
+    .upar {
         height: 7vh;
     }
 
-    .sidebar
-    {
+    .upar img {
+        height: 7vh;
+    }
+
+    .sidebar {
         margin-top: 7vh;
         height: 93vh;
     }
 
-    .main 
-    {
+    .main {
         margin-top: 25%;
     }
 
-    .sidebar.active~.main 
-    {
+    .sidebar.active~.main {
         margin-left: 0;
         width: 10%;
     }
 
-    ul li.settings 
-    {
+    ul li.settings {
         margin-top: 58vh;
-    
+
     }
+
 }
 
 
 
-ul li button 
-{
+ul li button {
     display: flex;
     cursor: pointer;
     width: 100%;
 }
 
-ul li span.tooltip 
-{
+ul li span.tooltip {
     background: rgb(38, 38, 38);
     color: whitesmoke;
     z-index: 1000;
 }
 
-ul li button i 
-{
+ul li button i {
     font-size: 22px;
 }
 
-ul li button span.nav-item 
-{
+ul li button span.nav-item {
     margin-left: 1rem;
 }
 
-ul li button 
-{
+ul li button {
     background: none;
     border: none;
     box-shadow: none;
@@ -448,13 +388,124 @@ ul li button
     color: whitesmoke;
 }
 
-ul li button:hover
-{
-    color:#7AA128;
+ul li button:hover {
+    color: #7AA128;
 }
 
-a
-{
+a {
     text-decoration: none;
     color: black;
+}
+
+
+.settings {
+    position: fixed;
+    bottom: 20px;
+}
+
+.upload-options-wrapper {
+    margin-top: 7px;
+}
+
+#filterButton {
+    transition: margin-top 0.3s ease;
+    /* Smooth transition when the button moves */
+}
+
+/* Style for Upload buttons */
+#uploadLost,
+#uploadFound {
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #444;
+    color: whitesmoke;
+    border: 1px solid #555;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: margin-top 0.3s ease;
+    /* Smooth transition when the button moves */
+}
+
+/* Hover effect for Upload buttons */
+#uploadLost:hover,
+#uploadFound:hover {
+    background-color: #7AA128;
+}
+
+#filter-options,
+#upload-options {
+    position: fixed;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-left: 20px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+#upload-options {
+    margin-top: 220px;
+}
+
+#upload-options select {
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #444;
+    color: whitesmoke;
+    border: 1px solid #555;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#upload-options button {
+    width: 75%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+
+#upload-options button:hover {
+    background-color: #7AA128;
+}
+
+#filterButton.moved,
+#uploadLost.moved,
+#uploadFound.moved {
+    margin-top: 73px;
+}
+
+
+#upload-options {
+    position: absolute;
+    /* Ensure it stays within the sidebar */
+    background-color: transparent;
+    border-radius: 10px;
+    top: 120px;
+    /* Position it below the Upload button */
+    left: 20px;
+    width: calc(100% - 40px);
+    /* Subtracting padding */
+    padding: 20px;
+    z-index: 1000;
+    display: none;
+    /* Initially hidden */
+    transition: all 0.3s ease;
+}
+
+#upload-options.show {
+    display: block;
+    /* Show when the button is clicked */
+}
+
+@media (max-width: 570px) {
+
+    #filterButton.moved,
+    #uploadLost.moved,
+    #uploadFound.moved {
+        margin-top: 110px;
+    }
 }

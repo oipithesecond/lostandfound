@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,126 +13,154 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="icon" href="images/billa.png" type="image/png">
 </head>
+
 <body>
     <div class="upar">
         <a href="/">
-            <img src="/images/FoundIt! logo.png" alt="FoundIt! logo" class="logo">
+            <img src="images/FoundIt! logo.png" alt="FoundIt! logo" class="logo">
         </a>
     </div>
     <div class="container">
-    <div class="sidebar">
-        <div class="top">
-            <i class="bx bx-menu" id="btn"></i>
-        </div>
-        <ul>
-            <li>
-                <!-- <a href="/upload">
+        <div class="sidebar">
+            <div class="top">
+                <i class="bx bx-menu" id="btn"></i>
+            </div>
+            <ul>
+                <li>
+                    <!-- <a href="/upload">
                     <i class="bx bx-upload"></i>
                     <span class="nav-item">Upload</span>
                 </a>
                 <span class="tooltip">Upload</span> -->
-                <button id="uploadButton">
-                    <i class="bx bx-upload"></i>
-                    <span class="nav-item">Upload</span>
-                </button>
-                <span class="tooltip">Upload</span>
-                <div id="uploadOptions" style="display: none;">
-                    <a href="/uploadlost"><button id="uploadLost">Upload Lost</button></a>
-                    <a href="/upload"><button id="uploadFound">Upload Found</button></a>
-            </li>
-            <li>
-                <button id="filterButton">
-                    <i class="bx bx-filter-alt"></i>
-                    <span class="nav-item">Filter</span>
-                </button>
-                <span class="tooltip">Filter</span>
-            </li>
-            <li class="settings">
-                <a href="/profile">
-                    <i class="bx bx-cog"></i>
-                    <span class="nav-item">Settings</span>
-                </a>
-                <span class="tooltip">Settings</span>
-            </li>
-        </ul>
-    </div>
-    <div id="filter-options" style="display: none;">
-        <div class="dropdown">
-            <select id="filter-item-type">
-                <option value="">Item type</option>
-                <option value="Bags & Wallet">Bags & Purse</option>
-                <option value="Notebook">Book</option>
-                <option value="Calculator">Calculator</option>
-                <option value="Charger">Charger</option>
-                <option value="Headphones & Earbuds">Headphones & Earbuds</option>
-                <option value="ID Card">ID Card</option>
-                <option value="Jewellery">Jewellery</option>
-                <option value="Keys">Keys</option>
-                <option value="Laptop">Laptop</option>
-                <option value="Laundry Bags & Garments">Laundry Bags & Garments</option>
-                <option value="Mobile phone">Mobile phone</option>
-                <option value="Spectacles & Sunglasses">Spectacles & Sunglasses</option>
-                <option value="Wallet">Wallet</option>
-                <option value="Water bottle">Water bottle</option>
-                <option value="Other">Other</option>
-            </select>
+                    <button id="uploadButton">
+                        <i class="bx bx-upload"></i>
+                        <span class="nav-item">Upload</span>
+                    </button>
+                    <span class="tooltip">Upload</span>
+                    <div id="uploadOptions" style="display: none;">
+                        <div class="upload-options-wrapper">
+                            <a href="/uploadlost">
+                                <button id="uploadLost">Report Lost</button>
+                            </a>
+                            <a href="/upload">
+                                <button id="uploadFound">Share Found</button>
+                            </a>
+                            
+                        </div>
+                </li>
+                <li>
+                    <button id="filterButton">
+                        <i class="bx bx-filter-alt"></i>
+                        <span class="nav-item">Filter</span>
+                    </button>
+                    <span class="tooltip">Filter</span>
+                </li>
+                <li class="settings">
+                    <a href="/profile">
+                        <i class="bx bx-cog"></i>
+                        <span class="nav-item">Settings</span>
+                    </a>
+                    <span class="tooltip">Settings</span>
+                </li>
+            </ul>
         </div>
-        <div class="dropdown">
-            <select id="filter-building">
-                <option value="">Location</option>
-                <option value="Academic Block-1 (AB-1)">Academic Block-1 (AB-1)</option>
-                <option value="Academic Block-1 Playground">Academic Block-1 Playground</option>
-                <option value="Academic Block-2 (AB-2)">Academic Block-2 (AB-2)</option>
-                <option value="Central Block">Central Block</option>
-                <option value="Food Street">Food Street</option>
-                <option value="Library">Library</option>
-                <option value="LH-1">LH-1</option>
-                <option value="LH-2">LH-2</option>
-                <option value="LH-3">LH-3</option>
-                <option value="LH-4">LH-4</option>
-                <option value="Maggi Hotspot">Maggi Hotspot</option>
-                <!-- <option value="MH-1">MH-1</option> -->
-                <option value="MH-2">MH-2</option>
-                <option value="MH-3">MH-3</option>
-                <option value="MH-4">MH-4</option>
-                <option value="MH-5">MH-5</option>
-                <option value="MH-6">MH-6</option>
-                <option value="Rock Plaza">Rock Plaza</option>
-                <option value="Road">Road</option>
-                <option value="Sports Triangle">Sports Triangle</option>
-                <option value="University Bus">University Bus</option>
-            </select>
+        <div id="filter-options" style="display: none;">
+            <div class="dropdown">
+                <select id="filter-item-type">
+                    <option value="">Item type</option>
+                    <option value="Bags & Wallet">Bags & Purse</option>
+                    <option value="Notebook">Book</option>
+                    <option value="Calculator">Calculator</option>
+                    <option value="Charger">Charger</option>
+                    <option value="Headphones & Earbuds">Headphones & Earbuds</option>
+                    <option value="ID Card">ID Card</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Keys">Keys</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Laundry Bags & Garments">Laundry Bags & Garments</option>
+                    <option value="Mobile phone">Mobile phone</option>
+                    <option value="Spectacles & Sunglasses">Spectacles & Sunglasses</option>
+                    <option value="Wallet">Wallet</option>
+                    <option value="Water bottle">Water bottle</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <select id="filter-building">
+                    <option value="">Location</option>
+                    <option value="Academic Block-1 (AB-1)">Academic Block-1 (AB-1)</option>
+                    <option value="Academic Block-1 Playground">Academic Block-1 Playground</option>
+                    <option value="Academic Block-2 (AB-2)">Academic Block-2 (AB-2)</option>
+                    <option value="Central Block">Central Block</option>
+                    <option value="Food Street">Food Street</option>
+                    <option value="Library">Library</option>
+                    <option value="LH-1">LH-1</option>
+                    <option value="LH-2">LH-2</option>
+                    <option value="LH-3">LH-3</option>
+                    <option value="LH-4">LH-4</option>
+                    <option value="Maggi Hotspot">Maggi Hotspot</option>
+                    <!-- <option value="MH-1">MH-1</option> -->
+                    <option value="MH-2">MH-2</option>
+                    <option value="MH-3">MH-3</option>
+                    <option value="MH-4">MH-4</option>
+                    <option value="MH-5">MH-5</option>
+                    <option value="MH-6">MH-6</option>
+                    <option value="Rock Plaza">Rock Plaza</option>
+                    <option value="Road">Road</option>
+                    <option value="Sports Triangle">Sports Triangle</option>
+                    <option value="University Bus">University Bus</option>
+                </select>
+            </div>
+
+            <div class="filter-option">
+                <!-- <label for="filter-status">Status</label> -->
+                <select id="filter-status">
+                    <option value="">Status</option>
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                </select>
+            </div>
+            
+            <button onclick="applyFilters()">Apply Filters</button>
         </div>
-        <button onclick="applyFilters()">Apply Filters</button>
-    </div>
-    <div class="main">
-        <% if(items.length) { %>
-            <% items.reverse().forEach(function(item){ %>
-            <a href="/items/<%= item._id %>">
-                <div class="item">
-                    <% if (item.images && item.images.length > 0) { %>
-                        <img src="/images/itemimage/<%= item.images[0].filename %>" alt="<%= item.images[0].originalname %>">
-                    <% } else { %>
-                        <img src="/images/Foundit! logo.png" alt="No Image Available">
-                    <% } %>
-                    <div class="overlay"></div>
-                    <h3><%= item.title %></h3>
-                    <p class="para">found at <%= item.building %></p>
-                    <div class="details">
-                        <div class="type"><%= item.itemType %></div>
-                        <div class="location"><%= item.building %></div>
-                    </div>
-                </div>
-            </a>
-            <% }) %>
-        <% } else { %>
-            <h3 class="text-white">no lost items yet</h3>
-        <% } %>
-    </div>
-    
+        <div class="main">
+            <% if(items.length) { %>
+                <% items.reverse().forEach(function(item){ %>
+                    <a href="/items/<%= item._id %>">
+                        <div class="item">
+                            <% if (item.images && item.images.length> 0) { %>
+                                <img src="/images/itemimage/<%= item.images[0].filename %>"
+                                    alt="<%= item.images[0].originalname %>">
+                                <% } else { %>
+                                    <img src="/images/Foundit! logo.png" alt="No Image Available">
+                                    <% } %>
+                                        <div class="overlay"></div>
+                                        <h3>
+                                            <%= item.title %>
+                                        </h3>
+                                        <p class="para">
+                                            <%= item.haal%> at <%= item.building %>
+                                        </p>
+                                        <div class="details">
+                                            <div class="type">
+                                                <%= item.itemType %>
+                                            </div>
+                                            <div class="location">
+                                                <%= item.building %>
+                                            </div>
+                                        </div>
+                        </div>
+                    </a>
+                    <% }) %>
+                        <% } else { %>
+                            <h3 class="text-white">no lost items yet</h3>
+                            <% } %>
+        </div>
+
     </div>
 </body>
 
 
 <script src="/scripts/home.js"></script>
+
 </html>
