@@ -3,3 +3,4 @@ versions
 .env
 promos
 .vscode
+dropIndex.js

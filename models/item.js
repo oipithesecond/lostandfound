@@ -10,7 +10,6 @@ const itemSchema = new mongoose.Schema({
   uploadDate: {
     type:Date,
     default: Date.now,
-    expires: '90d'
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
